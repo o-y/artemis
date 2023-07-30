@@ -1,7 +1,7 @@
-package api.page
+package core.page
 
-import api.css.PageStyleSheet
-import api.css.createPageStyleSheet
+import core.css.PageStyleSheet
+import core.css.createPageStyleSheet
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 

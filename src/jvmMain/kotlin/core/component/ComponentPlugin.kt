@@ -1,4 +1,4 @@
-package api.component
+package core.component
 
 /** Composable fragment of HTML and CSS contents. */
 abstract class ComponentPlugin {

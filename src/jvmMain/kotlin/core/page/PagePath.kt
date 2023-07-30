@@ -1,4 +1,4 @@
-package api.page
+package core.page
 
 class PagePath
 internal constructor(private val path: String) {

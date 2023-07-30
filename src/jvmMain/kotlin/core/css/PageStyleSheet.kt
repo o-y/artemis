@@ -1,6 +1,6 @@
-package api.css
+package core.css
 
-import api.page.createBody
+import core.page.createBody
 import kotlinx.css.CssBuilder
 
 /**

@@ -1,7 +1,7 @@
-package api.render
+package core.render
 
-import api.page.PagePlugin
-import api.page.createBody
+import core.page.PagePlugin
+import core.page.createBody
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.server.application.*

@@ -1,4 +1,4 @@
-package api.server
+package core.server
 
 /** Config for the [io.ktor.server]. */
 data class ArtemisServerConfig (

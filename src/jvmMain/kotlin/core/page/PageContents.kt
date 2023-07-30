@@ -1,4 +1,4 @@
-package api.page
+package core.page
 
 /**
  * Wrapper around HTML contents.

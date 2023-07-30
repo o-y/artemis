@@ -1,6 +1,6 @@
-package api.server
+package core.server
 
-import api.page.PagePlugin
+import core.page.PagePlugin
 import kotlin.reflect.KClass
 
 class ArtemisRunner {

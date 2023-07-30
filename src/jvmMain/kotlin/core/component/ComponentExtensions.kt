@@ -1,6 +1,6 @@
-package api.component
+package core.component
 
-import api.render.divIdSuffix
+import core.render.divIdSuffix
 import kotlinx.html.*
 import kotlinx.html.consumers.delayed
 import kotlinx.html.stream.HTMLStreamBuilder

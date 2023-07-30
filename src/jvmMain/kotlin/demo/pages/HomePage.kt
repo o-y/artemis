@@ -1,11 +1,11 @@
 package demo.pages
 
-import api.css.createPageStyleSheet
-import api.css.inlineStyle
-import api.page.PagePlugin
-import api.page.createBody
-import api.page.createHead
-import api.page.ofPath
+import core.css.createPageStyleSheet
+import core.css.inlineStyle
+import core.page.PagePlugin
+import core.page.createBody
+import core.page.createHead
+import core.page.ofPath
 import kotlinx.css.*
 import kotlinx.css.properties.transform
 import kotlinx.css.properties.translate

@@ -18,15 +18,10 @@ kotlin {
             kotlinOptions.jvmTarget = "1.8"
         }
 
-        // wtf
-        mainRun {
-            mainClass.set("demo.Main")
-        }
-
         withJava()
 
         testRuns["test"].executionTask.configure {
-            useJUnitPlatform();
+            useJUnitPlatform()
         }
     }
 
@@ -71,8 +66,12 @@ kotlin {
                 implementation("ch.qos.logback:logback-classic:1.4.7")
 
                 // compiler
-                implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.3.21")
+                implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.9.0")
             }
+
+            kotlin(Action {
+                srcDirs("build/generated/artemis/main/kotlin")
+            })
         }
 
         val jsMain by getting {
@@ -90,16 +89,22 @@ kotlin {
 tasks {
     val artemisDist = "build/artemis_dist"
 
+    val demoEntryPoint = "demo.DemoEntryPoint"
+    val artemisCompilerEntryPoint = "core.compiler.ArtemisCompiler"
+
     val buildJavaScript = named("jsBrowserProductionWebpack")
     val updateYarn = named("kotlinUpgradeYarnLock")
+
+    val compileKotlinJvm = named("compileKotlinJvm")
+    val compileKotlinJs = named("compileKotlinJs")
 
     // Internal defs
     lateinit var copyJavaScriptTask: Task
 
-    // Builders
-    register("artemisBuildJavaScript") {
+    //===== Builders
+    val artemisBuildJavaScript = register("artemisBuildJavaScript") {
         group = "artemis"
-        description = "Builds a JavaScript bundle from Kotlin code targeting JavaScript and places this in $artemisDist"
+        description = "Generates a JavaScript bundle from Kotlin code targeting JavaScript and places this in $artemisDist"
 
         copyJavaScriptTask.mustRunAfter(updateYarn)
         dependsOn(updateYarn, copyJavaScriptTask)
@@ -109,18 +114,31 @@ tasks {
         }
     }
 
-    // Runners
-    register("artemisRunServer") {
+    //===== Runners
+    val artemisRunServer = register<JavaExec>("artemisRunServer") {
         group = "artemis"
         description = "Runs the JVM-targeting Kotlin server"
 
-        val jvmRun = named("jvmRun").get()
+        dependsOn(artemisBuildJavaScript)
 
-        jvmRun.mustRunAfter(buildJavaScript)
-        dependsOn(buildJavaScript, jvmRun)
+        mainClass.set(demoEntryPoint)
+        classpath = sourceSets["main"].runtimeClasspath
     }
 
-    // Internal defs
+    val artemisBuildJavaScriptBindings = register<JavaExec>("artemisBuildJavaScriptBindings") {
+        group = "artemis"
+        description = "Generates bindings from JavaScript-based Kotlin for JVM-targeting code"
+
+        mainClass.set(artemisCompilerEntryPoint)
+        classpath = sourceSets["main"].runtimeClasspath
+    }
+
+    //===== Hooks
+    compileKotlinJs.configure {
+        dependsOn(artemisBuildJavaScriptBindings)
+    }
+
+    //===== Internal defs
     copyJavaScriptTask = create<Copy>("artemisInternalCopyJavaScript") {
         group = ""
         description = "INTERNAL TASK - Copies the generated JavaScript bundle into $artemisDist"

@@ -1,8 +1,7 @@
-package api.server
+package core.server
 
-import api.css.minifyStyleSheetWhiteSpace
-import api.page.PagePlugin
-import api.render.pagePluginsModule
+import core.page.PagePlugin
+import core.render.pagePluginsModule
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.html.*

@@ -1,4 +1,4 @@
-package api.css
+package core.css
 
 import kotlinx.css.*
 
@@ -24,4 +24,7 @@ inline fun inlineStyle(crossinline block: CssBuilder.() -> Unit = {}) =
 inline fun createPageStyleSheet(crossinline block: CssBuilder.() -> Unit = {}) =
     PageStyleSheet(CssBuilder().apply(block))
 
+/**
+ *
+ */
 fun String.minifyStyleSheetWhiteSpace() = this.replace("\n", " ").trim()

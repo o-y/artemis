@@ -1,6 +1,6 @@
-package api.component
+package core.component
 
-import api.page.PageContents
+import core.page.PageContents
 import kotlinx.html.*
 import kotlinx.html.stream.HTMLStreamBuilder
 

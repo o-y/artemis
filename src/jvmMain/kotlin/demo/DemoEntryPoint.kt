@@ -1,7 +1,8 @@
 package demo
 
-import api.server.ArtemisRunner
-import api.server.withPort
+import core.compiler.ArtemisCompiler
+import core.server.ArtemisRunner
+import core.server.withPort
 import demo.pages.HomePagePlugin
 
 /**
@@ -10,11 +11,14 @@ import demo.pages.HomePagePlugin
  *    (ServerRunner, FileBuildRunner). This will allow clients to either target building static content to artemis_dist
  *    OR support clients running Kotlin code on the server before returning HTML.
  */
-class Main {
+class DemoEntryPoint {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
             val artemisRunner = ArtemisRunner()
+            val artemisCompiler = ArtemisCompiler()
+
+//            artemisFunctionExtractor.transpileFiles()
 
             // TODO: Turn this into a DSL.
             artemisRunner.runServer(

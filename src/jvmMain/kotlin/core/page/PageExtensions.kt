@@ -1,6 +1,6 @@
-package api.page
+package core.page
 
-import api.render.divIdSuffix
+import core.render.divIdSuffix
 import kotlinx.html.*
 import kotlinx.html.consumers.delayed
 import kotlinx.html.consumers.filter
