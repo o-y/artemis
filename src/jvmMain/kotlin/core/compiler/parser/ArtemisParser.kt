@@ -1,9 +1,5 @@
 package core.compiler.parser
 
-import core.compiler.parser.internal.annotations
-import core.compiler.parser.internal.contents
-import core.compiler.parser.internal.functionDeclarations
-import core.compiler.parser.internal.importsList
 import org.jetbrains.kotlin.cli.jvm.compiler.EnvironmentConfigFiles
 import org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreEnvironment
 import org.jetbrains.kotlin.com.intellij.openapi.util.Disposer
