@@ -31,13 +31,16 @@ dependencies {
     implementation(kotlin("stdlib"))
 
     // multiplatform
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21")
 
     // compiler
     implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.9.0")
 
     // common
     implementation("com.google.guava:guava:32.1.1-jre")
+
+    // poet
+    implementation("com.squareup:kotlinpoet-ksp:1.14.2")
 }
 
 tasks {

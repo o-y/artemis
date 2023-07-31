@@ -1,7 +1,6 @@
 package wtf.zv.artemis.compiler.io
 
 import com.google.common.io.Files.getFileExtension
-import org.gradle.internal.impldep.org.bouncycastle.asn1.iana.IANAObjectIdentifiers.directory
 import wtf.zv.artemis.compiler.api.ArtemisBuildGraphGenerator
 import wtf.zv.artemis.compiler.api.ArtemisFunctionKey
 import wtf.zv.artemis.compiler.parser.ArtemisParser
@@ -10,6 +9,7 @@ import java.io.File
 import java.nio.file.Files.walk
 import java.nio.file.Path
 import kotlin.streams.toList
+import org.gradle.api.Project
 
 /** Parses Kotlin source sets [Set<File>] and generates a build graph which is persisted in the build/generated dir. */
 class ArtemisFileParser {
@@ -17,7 +17,7 @@ class ArtemisFileParser {
     private val artemisBuildGraphGenerator = ArtemisBuildGraphGenerator()
 
     /** Parses the given Kotlin [sourceSet] and generates a build graph from any matching Kotlin files. */
-    fun parseSourceSets(sourceSet: Set<File>) {
+    fun parseSourceSets(sourceSet: Set<File>, project: Project) {
         if (sourceSet.size > 1) {
             // TODO: Avoidable by index-keying these calls and where source set size exceeds one, append "_$index" to
             //       the generated build-graph keys and hash.
