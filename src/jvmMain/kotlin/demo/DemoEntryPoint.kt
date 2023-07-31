@@ -1,6 +1,5 @@
 package demo
 
-import core.compiler.ArtemisCompiler
 import core.server.ArtemisRunner
 import core.server.withPort
 import demo.pages.HomePagePlugin
@@ -16,9 +15,6 @@ class DemoEntryPoint {
         @JvmStatic
         fun main(args: Array<String>) {
             val artemisRunner = ArtemisRunner()
-            val artemisCompiler = ArtemisCompiler()
-
-//            artemisFunctionExtractor.transpileFiles()
 
             // TODO: Turn this into a DSL.
             artemisRunner.runServer(

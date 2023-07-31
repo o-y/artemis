@@ -1,4 +1,4 @@
-package core.compiler.parser
+package wtf.zv.artemis.compiler.parser
 
 import org.jetbrains.kotlin.cli.jvm.compiler.EnvironmentConfigFiles
 import org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreEnvironment
@@ -23,7 +23,7 @@ class ArtemisParser {
 
     fun parseContents(fileContents: String): ArtemisFile {
         val ktFile = parseKotlinFile(
-            fileName = buildString { repeat(12) { append((0..<36).random().toString(36)) } },
+            fileName = "<<<UNNAMED>>>",
             fileContents = fileContents
         )
 
@@ -34,8 +34,10 @@ class ArtemisParser {
         val importsList = importsList()
         val functionDeclarations = functionDeclarations()
 
+
         return ArtemisFile(
-            fileName = this.name,
+            fileName = name,
+            packageName = packageName(),
             fileImports = importsList.map { it.asString() },
             functionDeclarations = functionDeclarations.map {
                 ArtemisFunction(
@@ -55,9 +57,9 @@ class ArtemisParser {
             ) as KtFile
     }
 
-    private fun Path.openFile() = String(readAllBytes(this), Charsets.UTF_16)
+    private fun Path.openFile() = String(readAllBytes(this), Charsets.UTF_8)
 
-    private companion object {
+    companion object {
         private val kotlinCoreEnvironment = KotlinCoreEnvironment.createForProduction(
             Disposer.newDisposable(),
             CompilerConfiguration(),

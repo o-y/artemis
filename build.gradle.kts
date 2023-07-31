@@ -1,10 +1,14 @@
 plugins {
     kotlin("multiplatform") version "1.9.0"
     java
+
+    id("wtf.zv.artemis.compiler") version "0.0.1"
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+apply<wtf.zv.artemis.compiler.ArtemisCompilerPlugin>()
+
+group = "wtf.zv.artemis"
+version = "0.0.1"
 
 repositories {
     mavenCentral()
@@ -65,8 +69,8 @@ kotlin {
                 // logger
                 implementation("ch.qos.logback:logback-classic:1.4.7")
 
-                // compiler
-                implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.9.0")
+                // common
+                implementation("com.google.guava:guava:32.1.1-jre")
             }
 
             kotlin(Action {
@@ -81,6 +85,9 @@ kotlin {
 
                 // kotlinx html / browser
                 implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
+
+                // coroutines
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.7.3")
             }
         }
     }
@@ -88,15 +95,10 @@ kotlin {
 
 tasks {
     val artemisDist = "build/artemis_dist"
-
     val demoEntryPoint = "demo.DemoEntryPoint"
-    val artemisCompilerEntryPoint = "core.compiler.ArtemisCompiler"
 
     val buildJavaScript = named("jsBrowserProductionWebpack")
     val updateYarn = named("kotlinUpgradeYarnLock")
-
-    val compileKotlinJvm = named("compileKotlinJvm")
-    val compileKotlinJs = named("compileKotlinJs")
 
     // Internal defs
     lateinit var copyJavaScriptTask: Task
@@ -125,19 +127,6 @@ tasks {
         classpath = sourceSets["main"].runtimeClasspath
     }
 
-    val artemisBuildJavaScriptBindings = register<JavaExec>("artemisBuildJavaScriptBindings") {
-        group = "artemis"
-        description = "Generates bindings from JavaScript-based Kotlin for JVM-targeting code"
-
-        mainClass.set(artemisCompilerEntryPoint)
-        classpath = sourceSets["main"].runtimeClasspath
-    }
-
-    //===== Hooks
-    compileKotlinJs.configure {
-        dependsOn(artemisBuildJavaScriptBindings)
-    }
-
     //===== Internal defs
     copyJavaScriptTask = create<Copy>("artemisInternalCopyJavaScript") {
         group = ""
@@ -150,3 +139,13 @@ tasks {
         into(artemisDist)
     }
 }
+
+// hide non-artemis tasks in the Intellij side-panel
+//gradle.taskGraph.whenReady {
+//    tasks
+//        .filter { it.group != "artemis" }
+//        .forEach { task ->
+//            task.enabled = false
+//            task.group = ""
+//        }
+//}
