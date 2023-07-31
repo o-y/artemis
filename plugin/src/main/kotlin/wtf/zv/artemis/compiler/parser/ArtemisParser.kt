@@ -11,7 +11,10 @@ import org.jetbrains.kotlin.psi.KtFile
 import java.nio.file.Files.readAllBytes
 import java.nio.file.Path
 
-class ArtemisParser {
+/** Utility class which provides methods to parse and transform Kt files into [ArtemisFile] representations. */
+internal class ArtemisParser {
+
+    /** Parses a given [filePath] representing Kotlin source-code into an [ArtemisFile]. */
     fun parseFile(filePath: Path): ArtemisFile {
         val ktFile = parseKotlinFile(
             fileName = filePath.fileName.toString(),
@@ -21,9 +24,14 @@ class ArtemisParser {
         return ktFile.toArtemisFile()
     }
 
+    /**
+     * Parses a given String [fileContents] representing Kotlin source-code into an [ArtemisFile].
+     *
+     * As no file name is provided, the default [unnamedFileDefaultRepresentation] is delegated to.
+     */
     fun parseContents(fileContents: String): ArtemisFile {
         val ktFile = parseKotlinFile(
-            fileName = "<<<UNNAMED>>>",
+            fileName = unnamedFileDefaultRepresentation,
             fileContents = fileContents
         )
 
@@ -34,7 +42,6 @@ class ArtemisParser {
         val importsList = importsList()
         val functionDeclarations = functionDeclarations()
 
-
         return ArtemisFile(
             fileName = name,
             packageName = packageName(),
@@ -43,7 +50,7 @@ class ArtemisParser {
                 ArtemisFunction(
                     functionName = it.name.orEmpty(),
                     functionBody = it.contents(),
-                    annotations = it.annotations(),
+                    annotations = it.annotationsShortNames(),
                 )
             }
         )
@@ -59,11 +66,13 @@ class ArtemisParser {
 
     private fun Path.openFile() = String(readAllBytes(this), Charsets.UTF_8)
 
-    companion object {
+    private companion object {
         private val kotlinCoreEnvironment = KotlinCoreEnvironment.createForProduction(
             Disposer.newDisposable(),
             CompilerConfiguration(),
             EnvironmentConfigFiles.JS_CONFIG_FILES
         ).project
+
+        private const val unnamedFileDefaultRepresentation = "<<<UNNAMED>>>"
     }
 }

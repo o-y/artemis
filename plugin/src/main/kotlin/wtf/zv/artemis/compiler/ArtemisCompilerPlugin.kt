@@ -21,9 +21,7 @@ class ArtemisCompilerPlugin : Plugin<Project> {
         val kotlinMultiplatform = project.extensions.getByType(KotlinMultiplatformExtension::class.java)
         val jsMainSourceSet = kotlinMultiplatform.sourceSets.getByName(jsMainSourceSet).kotlin.srcDirs.toSet()
 
-        jsMainSourceSet.forEach {
-            artemisFileParser.transformFilesMatching(it.toPath())
-        }
+        artemisFileParser.parseSourceSets(jsMainSourceSet)
     }
 
     override fun apply(project: Project) = project.afterEvaluate {
