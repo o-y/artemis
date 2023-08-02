@@ -26,7 +26,7 @@ class ArtemisCompilerPlugin : Plugin<Project> {
 
     override fun apply(project: Project) = project.afterEvaluate {
         val artemisBuildJavaScriptBindings = project.tasks.register(artemisBuildJavaScriptBindingsTask) {
-            it.group = "custom"
+            it.group = ""
             it.description = "Generates bindings for JavaScript-targeting multiplatform code"
 
             it.doLast {
@@ -42,7 +42,6 @@ class ArtemisCompilerPlugin : Plugin<Project> {
     private companion object {
         private const val artemisBuildJavaScriptBindingsTask = "artemisBuildJavaScriptBindings"
         private const val compileKotlinJsTask = "compileKotlinJs"
-
         private const val jsMainSourceSet = "jsMain"
     }
 }

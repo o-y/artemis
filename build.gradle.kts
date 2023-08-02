@@ -74,7 +74,7 @@ kotlin {
             }
 
             kotlin(Action {
-                srcDirs("build/generated/artemis/main/kotlin")
+                srcDirs("build/artemis/generated/main/kotlin")
             })
         }
 
@@ -94,7 +94,7 @@ kotlin {
 }
 
 tasks {
-    val artemisDist = "build/artemis_dist"
+    val artemisDist = "build/artemis/javascript"
     val demoEntryPoint = "demo.DemoEntryPoint"
 
     val buildJavaScript = named("jsBrowserProductionWebpack")
@@ -134,6 +134,7 @@ tasks {
 
         from(buildJavaScript) {
             exclude("webpack.config.js")
+            include("*.js", "*.html")
         }
 
         into(artemisDist)

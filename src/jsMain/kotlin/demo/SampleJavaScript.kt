@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalJsExport::class)
+
 package demo
 
 import kotlinx.browser.window
@@ -13,7 +15,6 @@ fun sampleFunction() {
     }
 }
 
-@OptIn(ExperimentalJsExport::class)
 @JsExport
 fun sampleFunctionTwoAlias() = sampleFunction()
 

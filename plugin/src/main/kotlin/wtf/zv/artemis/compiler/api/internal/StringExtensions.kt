@@ -1,4 +1,4 @@
-package wtf.zv.artemis.compiler.api
+package wtf.zv.artemis.compiler.api.internal
 
 /** Naive implementation of a String to snake case converter */
 internal fun String.toSnakeCase() = replace("(?<=.)[A-Z]".toRegex(), "_$0").uppercase()

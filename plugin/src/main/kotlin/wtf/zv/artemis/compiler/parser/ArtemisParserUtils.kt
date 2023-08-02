@@ -64,3 +64,6 @@ internal fun KtFunction.contents(): String {
 
 /** The short name of the @kotlin.js.JsExport annotation. */
 internal const val JS_EXPORT_ANNOTATION = "JsExport"
+
+/** The common Kotlin file extension type. */
+internal const val KOTLIN_FILE_EXTENSION = "kt"

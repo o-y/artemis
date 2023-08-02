@@ -25,6 +25,7 @@ abstract class PagePlugin {
      * named after the path.
      *
      * @throws RuntimeException at init if there are multiple pages with conflicting path names.
+     * @throws AssertionError if any of the preconditions in [PagePath] fail.
      *
      * TODO: Pipe the ktor context into provideBody, this obviously has the ramification of conflicting with the cache
      *       expiry logic. Considering the context can be made optional we can use reflection to determine whether the

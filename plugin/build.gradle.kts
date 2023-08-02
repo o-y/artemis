@@ -57,7 +57,6 @@ tasks {
             println("[Artemis] ArtemisCompilerPlugin built and locally published to: ~/.m2/repositories")
         }
     }
-
 }
 
 // hide non-artemis tasks in the Intellij side-panel
