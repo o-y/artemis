@@ -5,7 +5,6 @@ package demo
 import kotlinx.browser.window
 import kotlinx.coroutines.*
 
-@OptIn(ExperimentalJsExport::class)
 @JsExport
 fun sampleFunction() {
     println("[artemis] exec: @sampleFunction: $window")
@@ -14,9 +13,6 @@ fun sampleFunction() {
         startCoroutine()
     }
 }
-
-@JsExport
-fun sampleFunctionTwoAlias() = sampleFunction()
 
 suspend fun startCoroutine() = coroutineScope {
     delay(5000)

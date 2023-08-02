@@ -19,7 +19,7 @@ repositories {
 kotlin {
     jvm {
         compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
+            kotlinOptions.jvmTarget = "19"
         }
 
         withJava()
@@ -57,7 +57,7 @@ kotlin {
             dependencies {
                 // kotlinx html + css
                 implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.555")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.604")
 
                 // ktor - http server
                 implementation("io.ktor:ktor-server-core-jvm:2.3.2")

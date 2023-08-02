@@ -37,7 +37,13 @@ fun Application.pagePluginsModule(pagePlugins: Set<PagePlugin>) {
                   }
                 }
 
-                body { unsafe { +plugin.provideBody().getHtml() } }
+                body {
+                  unsafe { +plugin.provideBody().getHtml() }
+
+                  script {
+                    + "console.log('test!')"
+                  }
+                }
               }
         }
 

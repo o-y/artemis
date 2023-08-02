@@ -13,7 +13,7 @@ internal class ArtemisFileWriter {
         val projectGeneratedBuildDir = "${projectBuildDir}/${generatedBuildDirectory}"
 
         fileSpecs.forEach { fileSpec ->
-            println("[Artemis @plugin]: NOTE: Writing to $projectGeneratedBuildDir")
+            println("[Artemis @plugin]: NOTE: Writing to $projectGeneratedBuildDir/${fileSpec.name}")
             fileSpec.writeTo(projectGeneratedBuildDir.toFile())
         }
     }

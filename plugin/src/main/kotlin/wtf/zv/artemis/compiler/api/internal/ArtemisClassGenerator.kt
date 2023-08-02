@@ -2,8 +2,6 @@ package wtf.zv.artemis.compiler.api.internal
 
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.TypeSpec.Companion.classBuilder
-import wtf.zv.artemis.compiler.api.ArtemisFileSpec
-import wtf.zv.artemis.compiler.api.toArtemisFileSpec
 import wtf.zv.artemis.compiler.parser.KOTLIN_FILE_EXTENSION
 
 /** Provides utilities to generate Artemis build graph [FileSpec]-scoped classes. */
@@ -41,7 +39,7 @@ internal class ArtemisClassGenerator {
 
         val artemisBuildGraphRootFile = FileSpec.builder(
             packageName = rootPackageNameDef,
-            fileName = "${rootClassNameDef}.${KOTLIN_FILE_EXTENSION}"
+            fileName = rootClassNameDef
         )
 
         return artemisBuildGraphRootFile
@@ -84,7 +82,7 @@ internal class ArtemisClassGenerator {
 
         val generatedBuildGraphFile = FileSpec.builder(
             packageName = artemisFunctionGroup.rawPackageName,
-            fileName = generatedFileName
+            fileName = generatedClassName
         )
 
         return generatedBuildGraphFile
