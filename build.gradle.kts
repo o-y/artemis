@@ -1,15 +1,16 @@
-tasks {
-    register("BuildEverything") {
-        group = "artemis"
-        description = "Build "
+//tasks {
+//    val artemisRunTask = "artemisRun"
+//
+//    register(artemisRunTask) {
+//        group = "artemis"
+//        description = "Publishes Artemis, Builds JavaScript bindings, runs the server"
+//
+//        doLast {
+//            println("[Artemis KMP] Building everything")
+//        }
+//    }
+//}
 
-        doLast {
-            println("[Artemis KMP] Building everything")
-        }
-    }
-}
-
-// hide non-artemis tasks in the Intellij side-panel
 //gradle.taskGraph.whenReady {
 //    tasks
 //        .filter { it.group != "artemis" }

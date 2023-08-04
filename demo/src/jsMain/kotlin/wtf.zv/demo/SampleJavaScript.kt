@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalJsExport::class)
 
-package demo
+package wtf.zv.demo
 
 import kotlinx.browser.window
 import kotlinx.coroutines.*

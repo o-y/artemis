@@ -1,4 +1,4 @@
-package wtf.zv.artemis.core.css
+package wtf.zv.artemis.core.web.page.api
 
 import kotlinx.css.CssBuilder
 
@@ -10,5 +10,5 @@ import kotlinx.css.CssBuilder
 class PageStyleSheet constructor(private val cssBuilder: CssBuilder) {
     fun getCssBuilder() = cssBuilder
 
-    fun getStyleSheetString() = cssBuilder.toString()
+    fun getStyleSheet() = cssBuilder.toString()
 }

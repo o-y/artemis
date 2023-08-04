@@ -1,6 +1,6 @@
-package wtf.zv.artemis.core.page
+package wtf.zv.artemis.core.web.page.api
 
-import wtf.zv.artemis.core.render.divIdSuffix
+import wtf.zv.artemis.core.web.page.render.divIdSuffix
 import kotlinx.html.*
 import kotlinx.html.consumers.delayed
 import kotlinx.html.consumers.filter
@@ -27,7 +27,7 @@ import kotlinx.html.stream.HTMLStreamBuilder
  *    }
  *
  * NOTE: For compatability reasons all page content is wrapped in a top-level div ([kotlinx.html.div]). At the client
- * side level these can be differentiated due to their "kt_" suffix, however this can be modified with the
+ * side level these can be differentiated due to their "artemis_" suffix, however this can be modified with the
  * [divIdSuffix] optional parameter.
  */
 inline fun createBody(

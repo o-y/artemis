@@ -23,11 +23,12 @@ internal object ArtemisPluginOrchestrator {
                     }
                     it.description = definition.definitionDescription
 
-                    it.doLast {
+                    it.doFirst {
                         println("Executing: $taskSet")
                     }
 
-                    it.dependsOn(taskSet)
+                    // for some reason it.dependsOn(taskSet) causes Stackoverflow errors
+                    taskSet.forEach(it::dependsOn)
                 }
             }
         }

@@ -1,6 +1,7 @@
 package wtf.zv.artemis.core.server
 
-import wtf.zv.artemis.core.page.PagePlugin
+import wtf.zv.artemis.core.web.page.PagePlugin
+import wtf.zv.artemis.core.server.internal.ArtemisServer
 import kotlin.reflect.KClass
 
 class ArtemisRunner {

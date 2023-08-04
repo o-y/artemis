@@ -1,6 +1,7 @@
-package wtf.zv.artemis.core.css
+package wtf.zv.artemis.core.web.std.css
 
 import kotlinx.css.*
+import wtf.zv.artemis.core.web.page.api.PageStyleSheet
 
 /**
  * Creates an inline style for a given HTML element.

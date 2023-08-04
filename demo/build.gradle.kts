@@ -19,8 +19,8 @@ repositories {
 
 kotlin {
     jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = "19"
+        mainRun {
+            mainClass.set("wtf.zv.demo.DemoEntryPoint")
         }
 
         withJava()

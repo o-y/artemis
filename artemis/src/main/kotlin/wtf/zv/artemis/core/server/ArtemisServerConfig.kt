@@ -7,5 +7,5 @@ data class ArtemisServerConfig (
     val baseOverridePathSuffix: String = ""
 )
 
-/** Convince method, creates an instance of [ArtemisServerConfig] with the [port] set. */
+/** Convenience method, creates an instance of [ArtemisServerConfig] with the [port] set. */
 fun withPort(port: Int) = ArtemisServerConfig(port = port)

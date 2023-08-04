@@ -1,4 +1,4 @@
-package wtf.zv.artemis.core.page
+package wtf.zv.artemis.core.web.page.api
 
 /**
  * Wrapper around HTML contents.

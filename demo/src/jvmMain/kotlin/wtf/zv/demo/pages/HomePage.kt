@@ -4,14 +4,16 @@ import kotlinx.css.*
 import kotlinx.css.properties.transform
 import kotlinx.css.properties.translate
 import kotlinx.html.*
-import wtf.zv.artemis.core.css.createPageStyleSheet
-import wtf.zv.artemis.core.css.inlineStyle
-import wtf.zv.artemis.core.page.PagePlugin
-import wtf.zv.artemis.core.page.createBody
-import wtf.zv.artemis.core.page.createHead
-import wtf.zv.artemis.core.page.ofPath
+import wtf.zv.artemis.core.web.page.PagePlugin
+import wtf.zv.artemis.core.web.page.api.createBody
+import wtf.zv.artemis.core.web.page.api.createHead
+import wtf.zv.artemis.core.web.page.api.ofPath
+import wtf.zv.artemis.core.web.std.css.createPageStyleSheet
+import wtf.zv.artemis.core.web.std.css.inlineStyle
 
 class HomePagePlugin : PagePlugin() {
+  override fun providePath() = ofPath("/")
+
   override fun provideBody() = createBody {
     val divider = "--"
 
@@ -100,6 +102,4 @@ class HomePagePlugin : PagePlugin() {
       }
     }
   }
-
-  override fun providePath() = ofPath("/")
 }

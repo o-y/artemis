@@ -1,22 +1,20 @@
-package wtf.zv.artemis.core.page
+package wtf.zv.artemis.core.web.page
 
-import wtf.zv.artemis.core.css.PageStyleSheet
-import wtf.zv.artemis.core.css.createPageStyleSheet
+import wtf.zv.artemis.core.web.page.api.PageContents
+import wtf.zv.artemis.core.web.page.api.PagePath
+import wtf.zv.artemis.core.web.page.api.createHead
+import wtf.zv.artemis.core.web.page.api.PageStyleSheet
+import wtf.zv.artemis.core.web.std.css.createPageStyleSheet
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
 /**
- * Base entrypoint for creating web page content.
+ * Base entrypoint for creating web pages.
  *
  * Each webpage should map to exactly one instance of [PagePlugin], for composability the component library can be used
  * which helps define reusable chunks of HTML.
  */
 abstract class PagePlugin {
-    /**
-     * Defines the body of the given page, this should be created using the [createBody] DSL.
-     */
-    abstract fun provideBody(): PageContents
-
     /**
      * Defines which URL paths the current page should serve.
      *
@@ -33,6 +31,11 @@ abstract class PagePlugin {
      *       parameters.
      */
     abstract fun providePath(): PagePath
+
+    /**
+     * Defines the body of the given page, this should be created using the [createBody] DSL.
+     */
+    abstract fun provideBody(): PageContents
 
     /**
      * Defines the head of the given page, this should be created using the [createHead] DSL.

@@ -3,6 +3,7 @@ package wtf.zv.demo
 import wtf.zv.demo.pages.HomePagePlugin
 import wtf.zv.artemis.core.server.ArtemisRunner
 import wtf.zv.artemis.core.server.withPort
+import wtf.zv.demo.pages.JavaScriptPagePlugin
 
 /**
  * TODOs:
@@ -19,7 +20,8 @@ class DemoEntryPoint {
             // TODO: Turn this into a DSL.
             artemisRunner.runServer(
                 withPort(4660),
-                HomePagePlugin::class
+                HomePagePlugin::class,
+                JavaScriptPagePlugin::class
             )
         }
     }

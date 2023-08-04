@@ -1,16 +1,14 @@
-package wtf.zv.artemis.core.server
+package wtf.zv.artemis.core.server.internal
 
-import wtf.zv.artemis.core.render.pagePluginsModule
+import wtf.zv.artemis.core.web.page.render.pagePluginsModule
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import wtf.zv.artemis.core.page.PagePlugin
+import wtf.zv.artemis.core.web.page.PagePlugin
+import wtf.zv.artemis.core.server.ArtemisServerConfig
 import kotlin.reflect.KClass
 import kotlin.reflect.full.createInstance
 
-class ArtemisServer
-internal constructor(
-    private val artemisServerConfig: ArtemisServerConfig
-) {
+internal class ArtemisServer(private val artemisServerConfig: ArtemisServerConfig) {
     private var pagePluginsSet: Set<PagePlugin> = setOf();
 
     fun bindPagePlugins(plugins: Set<KClass<out PagePlugin>>): ArtemisServer {

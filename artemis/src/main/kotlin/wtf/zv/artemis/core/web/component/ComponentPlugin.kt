@@ -1,9 +1,19 @@
-package wtf.zv.artemis.core.component
+package wtf.zv.artemis.core.web.component
 
-import wtf.zv.artemis.core.render.divIdSuffix
 import kotlinx.html.*
 import kotlinx.html.consumers.delayed
 import kotlinx.html.stream.HTMLStreamBuilder
+import wtf.zv.artemis.core.web.page.api.PageContents
+import wtf.zv.artemis.core.web.page.render.divIdSuffix
+
+/**
+ * Wrapper around modular HTML contents.
+ *
+ * Clients should not manually create instances of this class, instead [createComponent] should be called.
+ *
+ * These components can be mounted using the [mountComponent] method.
+ */
+class ComponentContents internal constructor(htmlContents: String) : PageContents(htmlContents)
 
 /**
  * Creates an instance of [ComponentContents] with the given HTML contents.
@@ -43,7 +53,6 @@ inline fun createComponent(
 fun HTMLTag.mountComponent(component: ComponentContents) = unsafe {
     + component.getHtml()
 }
-
 
 /**
  * Internal usage only, clients should refer to the [createComponent] method to create instances of [ComponentContents].
