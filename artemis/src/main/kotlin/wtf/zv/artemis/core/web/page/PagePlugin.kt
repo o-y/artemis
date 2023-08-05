@@ -4,6 +4,8 @@ import wtf.zv.artemis.core.web.page.api.PageContents
 import wtf.zv.artemis.core.web.page.api.PagePath
 import wtf.zv.artemis.core.web.page.api.createHead
 import wtf.zv.artemis.core.web.page.api.PageStyleSheet
+import wtf.zv.artemis.core.web.page.javascript.internal.JavaScriptKeyAnnotationProcessor
+import wtf.zv.artemis.core.web.page.javascript.internal.JavaScriptKeyAnnotationProcessor.extractPluginKeys
 import wtf.zv.artemis.core.web.std.css.createPageStyleSheet
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -59,4 +61,7 @@ abstract class PagePlugin {
      *       As a bonus this will also allows clients to target their build with the FileBuildRunner.
      */
     open fun provideCacheExpiry(): Duration = 0.seconds
+
+    /** INTERNAL API - Provides any associated JavaScript API calls formatted as a String [Set]. */
+    internal fun provideJavaScriptApiCalls() = extractPluginKeys(this)
 }

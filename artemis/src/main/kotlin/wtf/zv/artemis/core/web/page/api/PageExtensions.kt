@@ -1,10 +1,10 @@
 package wtf.zv.artemis.core.web.page.api
 
-import wtf.zv.artemis.core.web.page.render.divIdSuffix
 import kotlinx.html.*
 import kotlinx.html.consumers.delayed
 import kotlinx.html.consumers.filter
 import kotlinx.html.stream.HTMLStreamBuilder
+import wtf.zv.artemis.core.config.ArtemisCoreConfig.DIV_ID_SUFFIX
 
 /**
  * Creates an instance of [PageContents] with the given HTML contents.
@@ -31,7 +31,7 @@ import kotlinx.html.stream.HTMLStreamBuilder
  * [divIdSuffix] optional parameter.
  */
 inline fun createBody(
-    idSuffix: String = divIdSuffix,
+    idSuffix: String = DIV_ID_SUFFIX,
     crossinline block: FlowContent.() -> Unit = {},
 ): PageContents {
     val divId = buildString {

@@ -4,29 +4,18 @@ package wtf.zv.demo
 
 import kotlinx.browser.window
 import kotlinx.coroutines.*
+import org.w3c.dom.Window
 
 @JsExport
 fun sampleFunction() {
-    println("[artemis] exec: @sampleFunction: $window")
+    println("[artemis] executing sampleFunction!")
 
     MainScope().launch {
-        startCoroutine()
+        window.document.body?.innerHTML = fetchLastFmStatus()
     }
 }
 
-suspend fun startCoroutine() = coroutineScope {
-    delay(5000)
-
-    launch {
-        delay(30)
-        println("[artemis] running in background")
-    }
-
-    val listeningTo = sampleApiCall()
-    println(listeningTo)
-}
-
-suspend fun sampleApiCall(): String {
+suspend fun fetchLastFmStatus(): String {
     return window.fetch("https://z.zv.wtf/lastfm/v1/listening")
         .then { it.text() }
         .then { "[artemis] lastfm response: $it" }

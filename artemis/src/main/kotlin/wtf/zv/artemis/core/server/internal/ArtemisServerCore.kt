@@ -8,10 +8,10 @@ import wtf.zv.artemis.core.server.ArtemisServerConfig
 import kotlin.reflect.KClass
 import kotlin.reflect.full.createInstance
 
-internal class ArtemisServer(private val artemisServerConfig: ArtemisServerConfig) {
+internal class ArtemisServerCore(private val artemisServerConfig: ArtemisServerConfig) {
     private var pagePluginsSet: Set<PagePlugin> = setOf();
 
-    fun bindPagePlugins(plugins: Set<KClass<out PagePlugin>>): ArtemisServer {
+    fun bindPagePlugins(plugins: Set<KClass<out PagePlugin>>): ArtemisServerCore {
         assert(pagePluginsSet.isEmpty()) {
             "Encountered multiple calls to #bindPagePlugins"
         }
@@ -26,6 +26,7 @@ internal class ArtemisServer(private val artemisServerConfig: ArtemisServerConfi
             Netty,
             port = artemisServerConfig.port,
             module = {
+                staticScriptRoute()
                 pagePluginsModule(pagePluginsSet)
             }
         ).start(wait = true)

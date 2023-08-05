@@ -3,8 +3,8 @@ package wtf.zv.artemis.core.web.component
 import kotlinx.html.*
 import kotlinx.html.consumers.delayed
 import kotlinx.html.stream.HTMLStreamBuilder
+import wtf.zv.artemis.core.config.ArtemisCoreConfig.DIV_ID_SUFFIX
 import wtf.zv.artemis.core.web.page.api.PageContents
-import wtf.zv.artemis.core.web.page.render.divIdSuffix
 
 /**
  * Wrapper around modular HTML contents.
@@ -19,7 +19,7 @@ class ComponentContents internal constructor(htmlContents: String) : PageContent
  * Creates an instance of [ComponentContents] with the given HTML contents.
  */
 inline fun createComponent(
-    idSuffix: String = divIdSuffix,
+    idSuffix: String = DIV_ID_SUFFIX,
     crossinline block: FlowContent.() -> Unit = {},
 ): ComponentContents {
     val divId = buildString {
