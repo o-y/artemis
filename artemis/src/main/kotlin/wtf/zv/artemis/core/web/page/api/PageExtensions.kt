@@ -4,7 +4,7 @@ import kotlinx.html.*
 import kotlinx.html.consumers.delayed
 import kotlinx.html.consumers.filter
 import kotlinx.html.stream.HTMLStreamBuilder
-import wtf.zv.artemis.core.config.ArtemisCoreConfig.DIV_ID_SUFFIX
+import wtf.zv.artemis.core.config.ArtemisConstants.DIV_ID_SUFFIX
 
 /**
  * Creates an instance of [PageContents] with the given HTML contents.

@@ -3,7 +3,7 @@ package wtf.zv.artemis.core.web.component
 import kotlinx.html.*
 import kotlinx.html.consumers.delayed
 import kotlinx.html.stream.HTMLStreamBuilder
-import wtf.zv.artemis.core.config.ArtemisCoreConfig.DIV_ID_SUFFIX
+import wtf.zv.artemis.core.config.ArtemisConstants.DIV_ID_SUFFIX
 import wtf.zv.artemis.core.web.page.api.PageContents
 
 /**

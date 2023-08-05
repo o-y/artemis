@@ -12,6 +12,17 @@ plugins {
 group = "wtf.zv.artemis"
 version = "0.0.1"
 
+kotlin {
+    sourceSets.all {
+        // Enable the K2 compiler
+        languageSettings {
+            languageVersion = "2.0"
+        }
+
+        // Enable ExplicitBackingFields
+        languageSettings.enableLanguageFeature("ExplicitBackingFields")
+    }
+}
 
 repositories {
     mavenCentral()

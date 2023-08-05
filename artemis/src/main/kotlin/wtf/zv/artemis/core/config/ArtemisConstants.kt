@@ -3,7 +3,7 @@ package wtf.zv.artemis.core.config
 import wtf.zv.artemis.core.web.page.api.createBody
 
 /** Shared configuration and library-wide constants. */
-object ArtemisCoreConfig {
+object ArtemisConstants {
 
     /**
      * Generated JavaScript bundle API entrypoint.
@@ -22,6 +22,10 @@ object ArtemisCoreConfig {
      */
     const val ARTEMIS_JAVASCRIPT_BUNDLE_URL = "/_/artemis/build/artemis_bundle.js"
 
-    /** The default suffix for top-level HTML Div elements rendered using [createBody]. */
+    /**
+     * The default suffix for top-level HTML Div elements rendered using [createBody].
+     *
+     * TODO: Allow clients to configure this.
+     */
     const val DIV_ID_SUFFIX = "artemis_"
 }

@@ -1,7 +1,7 @@
 package wtf.zv.artemis.core.web.page.render.internal
 
 import kotlinx.html.*
-import wtf.zv.artemis.core.config.ArtemisCoreConfig.ARTEMIS_JAVASCRIPT_BUNDLE_URL
+import wtf.zv.artemis.core.config.ArtemisConstants.ARTEMIS_JAVASCRIPT_BUNDLE_URL
 import wtf.zv.artemis.core.web.page.PagePlugin
 
 /** [HTML] plugin - renders the HTML Head provided by the [pagePlugin]. */

@@ -8,6 +8,7 @@ import io.ktor.server.routing.*
 import wtf.zv.artemis.core.web.page.PagePlugin
 import wtf.zv.artemis.core.web.page.render.internal.parseToHtmlString
 
+/** [Application] module to serve [PagePlugin]'s. */
 internal fun Application.pagePluginsModule(pagePlugins: Set<PagePlugin>) {
   routing {
     pagePlugins.forEach { plugin ->

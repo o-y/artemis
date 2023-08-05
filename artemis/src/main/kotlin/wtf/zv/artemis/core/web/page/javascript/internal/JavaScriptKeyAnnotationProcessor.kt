@@ -1,7 +1,7 @@
 package wtf.zv.artemis.core.web.page.javascript.internal
 
 import org.jetbrains.kotlin.utils.getSafe
-import wtf.zv.artemis.core.config.ArtemisCoreConfig.ARTEMIS_JAVASCRIPT_BUNDLE_ENTRY_POINT
+import wtf.zv.artemis.core.config.ArtemisConstants.ARTEMIS_JAVASCRIPT_BUNDLE_ENTRY_POINT
 import wtf.zv.artemis.core.web.page.PagePlugin
 import wtf.zv.artemis.core.web.page.javascript.JavaScriptKey
 import wtf.zv.artemis.root.ArtemisBuildGraphRoot
