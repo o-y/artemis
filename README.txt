@@ -18,7 +18,7 @@ planned features (unordered):
   - various performance optimisations:
     - introduce the notion of "pure" server-side rendered Kotlin pages which can be indefinitely cached.
     - multi-thread certain APIs and execute page rendering in coroutine scopes
-    - introduce a File target so entirely pure projects can generate HTML code without the need for a Kotlin server.
+    - introduce a File target so entirely pure projects can generate HTML files without the need for a web server.
 
 project structure:
   - artemis

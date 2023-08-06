@@ -17,10 +17,11 @@ kotlin {
         // Enable the K2 compiler
         languageSettings {
             languageVersion = "2.0"
+            progressiveMode = true
         }
 
         // Enable ExplicitBackingFields
-        languageSettings.enableLanguageFeature("ExplicitBackingFields")
+        // languageSettings.enableLanguageFeature("ExplicitBackingFields")
     }
 }
 

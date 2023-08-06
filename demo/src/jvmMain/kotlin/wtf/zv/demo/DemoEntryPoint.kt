@@ -1,8 +1,8 @@
 package wtf.zv.demo
 
+import wtf.zv.artemis.core.config.ArtemisConfig.Dsl.artemisServerConfig
+import wtf.zv.artemis.core.server.ArtemisClient
 import wtf.zv.demo.pages.HomePagePlugin
-import wtf.zv.artemis.core.server.ArtemisRunner
-import wtf.zv.artemis.core.server.withPort
 import wtf.zv.demo.pages.JavaScriptPagePlugin
 
 /**
@@ -15,14 +15,11 @@ class DemoEntryPoint {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            val artemisRunner = ArtemisRunner()
-
-            // TODO: Turn this into a DSL.
-            artemisRunner.runServer(
-                withPort(4660),
-                HomePagePlugin::class,
-                JavaScriptPagePlugin::class
-            )
+            ArtemisClient.createWithConfig(artemisServerConfig {
+                serverPort(port = 4665)
+                installPagePlugin(HomePagePlugin::class)
+                installPagePlugin(JavaScriptPagePlugin::class)
+            })
         }
     }
 }
