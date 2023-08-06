@@ -1,5 +1,7 @@
 plugins {
     kotlin("multiplatform") version "1.9.0"
+    kotlin("plugin.serialization") version "1.9.0"
+
     java
 
     id("wtf.zv.artemis.plugin") version "0.0.1"
@@ -78,9 +80,14 @@ kotlin {
 
                 // kotlinx html / browser
                 implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.604")
 
                 // coroutines
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.7.3")
+
+                // serialization
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core-js:1.6.0-RC")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0-RC")
             }
         }
     }

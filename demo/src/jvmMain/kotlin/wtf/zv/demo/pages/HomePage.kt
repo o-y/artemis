@@ -8,9 +8,12 @@ import wtf.zv.artemis.core.web.page.PagePlugin
 import wtf.zv.artemis.core.web.page.api.createBody
 import wtf.zv.artemis.core.web.page.api.createHead
 import wtf.zv.artemis.core.web.page.api.ofPath
+import wtf.zv.artemis.core.web.page.javascript.JavaScriptKey
 import wtf.zv.artemis.core.web.std.css.createPageStyleSheet
 import wtf.zv.artemis.core.web.std.css.inlineStyle
+import wtf.zv.demo.ArtemisBuildGraphLastFmStatusApi.GET_LAST_FM_STATUS
 
+@JavaScriptKey(GET_LAST_FM_STATUS::class)
 class HomePagePlugin : PagePlugin() {
   override fun providePath() = ofPath("/")
 
@@ -63,7 +66,13 @@ class HomePagePlugin : PagePlugin() {
       }
     }
 
-    pre { style = inlineStyle { color = hex(0xbdc3c7) } }
+    pre {
+      id = "LAST_FM_STATUS"
+      style = inlineStyle {
+        color = hex(0xbdc3c7)
+        marginTop = 80.px
+      }
+    }
   }
 
   override fun provideHead() = createHead { title { +"zv.wtf" } }
@@ -100,6 +109,10 @@ class HomePagePlugin : PagePlugin() {
       transform {
         translate(140.px * -1, 60.px)
       }
+    }
+
+    rule(".hover-cursor") {
+      cursor = Cursor.pointer
     }
   }
 }
