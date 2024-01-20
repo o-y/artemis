@@ -7,7 +7,7 @@ plugins {
     id("wtf.zv.artemis.plugin") version "0.0.1"
 }
 
-apply<wtf.zv.artemis.plugin.ArtemisCorePlugin>()
+//apply<wtf.zv.artemis.plugin.ArtemisCorePlugin>()
 
 group = "wtf.zv.artemis"
 version = "0.0.1"

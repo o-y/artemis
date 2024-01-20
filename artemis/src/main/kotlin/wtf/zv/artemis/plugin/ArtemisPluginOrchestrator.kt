@@ -28,26 +28,20 @@ internal object ArtemisPluginOrchestrator {
                     }
 
                     // for some reason it.dependsOn(taskSet) causes Stackoverflow errors
-                    taskSet.forEach(it::dependsOn)
+                    it.dependsOn(taskSet)
                 }
             }
         }
     }
 
-    /** Adds the given [task] to the Artemis Gradle Build Graph keyed by [def]. */
-    internal operator fun set(def: GradleBuildDefinition, task: Task) =
-        registerHookFor(def, task)
-
     /** Adds the given [taskProvider] [Task] to the Artemis Gradle Build Graph keyed by [def]. */
-    internal operator fun set(def: GradleBuildDefinition, taskProvider: TaskProvider<*>) =
-        registerHookFor(def, taskProvider.get())
-
-    /** Returns the associated Artemis Gradle Build Graph for the given [def] key. */
-    internal operator fun get(def: GradleBuildDefinition) =
-        registeredHooks.getOrPut(def) { mutableSetOf() }
-
-    private fun registerHookFor(def: GradleBuildDefinition, task: Task) {
+    internal fun registerHookFor(def: GradleBuildDefinition, task: Task) {
         registeredHooks.getOrPut(def) { mutableSetOf() }.add(task)
+    }
+
+    /** Clears any currently registered hooks. */
+    internal fun clearHooks() {
+        registeredHooks.clear()
     }
 }
 

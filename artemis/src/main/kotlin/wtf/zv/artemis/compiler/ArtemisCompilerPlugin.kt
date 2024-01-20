@@ -31,7 +31,10 @@ internal class ArtemisCompilerPlugin : ArtemisPluginBase {
             }
         }
 
-        ArtemisPluginOrchestrator[ArtemisBuildJavaScript] = artemisBuildJavaScriptBinding
+        ArtemisPluginOrchestrator.registerHookFor(
+            ArtemisBuildJavaScript,
+            artemisBuildJavaScriptBinding.get()
+        )
     }
 
     private fun transpileFiles(project: Project) {

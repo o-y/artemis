@@ -34,23 +34,26 @@ internal class ArtemisTranspilerPlugin : ArtemisPluginBase {
                 }
             }
 
-            ArtemisPluginOrchestrator[ArtemisBuildJavaScript] = artemisBuildJavaScriptBundle
+            ArtemisPluginOrchestrator.registerHookFor(
+                ArtemisBuildJavaScript,
+                artemisBuildJavaScriptBundle.get()
+            )
         }
     }
 
     private fun TaskContainer.copyJavaScriptTask(): Task {
         val buildJavaScript = buildJavaScriptTask()
 
-        return register(artemisInternalCopyJavaScriptTask, Copy::class.java) { it ->
-            it.group = ""
-            it.description = "INTERNAL TASK - Copies the generated JavaScript bundle into $artemisDist"
+        return register(artemisInternalCopyJavaScriptTask, Copy::class.java) { task ->
+            task.group = ""
+            task.description = "INTERNAL TASK - Copies the generated JavaScript bundle into $artemisDist"
 
-            it.from(buildJavaScript) {
+            task.from(buildJavaScript) {
                 it.exclude("webpack.config.js")
                 it.include("*.js", "*.html")
             }
 
-            it.into(artemisDist)
+            task.into(artemisDist)
         }.get()
     }
 
