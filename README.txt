@@ -26,7 +26,8 @@ project structure:
     - compiler   - plugin support; generates JVM-targeted bindings from KMP JS code and transpiles into JavaScript
     - plugin     - Gradle plugin; registers client-facing Gradle tasks and the compiler plugin
   - artemis-common
-    -
+    - common     - Shared identifiers infrastructure (providing the framework to expose HTML Element IDs)
+    - jsMain     - JS-targeting framework support
   - demo
     - commonMain - KMP Shared objects (specifically HTML Element IDs)
     - jvmMain    - KMP JVM-based demo
