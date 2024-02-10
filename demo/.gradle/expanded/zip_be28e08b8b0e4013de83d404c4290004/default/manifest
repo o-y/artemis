@@ -1,0 +1,9 @@
+builtins_platform=JS
+unique_name=org.jetbrains.kotlin-wrappers\:kotlin-css
+compiler_version=1.9.0
+depends=kotlin
+serializedKlibFingerprint=nf2v1bt6l2x3.2qioqxn3b86nb
+serializedIrFileFingerprints=j5sbq3ppziac.2gy5pq2v131bp 1s21yq71iuyv2.1rz2zry2t6f3z 1cpcumjgurk47.1n2yhn18efoh6 19i88yylknz9b.crgzk2ok9z8m 3fv4q2v0h0n3.lm5ei13jrkrt 2aett438yuu2s.2icz9jhrqc8ap qk5beum3kd5g.1rgnueq9y87ed 2zrunofp4qqgb.2a35zryefylq2 2z18obszjyc0.1uoiygxlvn6l3 21v55mjve74bz.15a472wicmw5q 3lxxrccbc49lx.tlowbtqifehp 1uu3d5fq2j7v0.13uynfgx63lhg 1yg4tkoqb4d4c.1v6ivaoznm11t 1hh8tjglhjfhi.1gk1r5eq3vdeb 2j18chekvch1g.3k2j7r3ulzlvg nil50f7hnlrk.12bk1oeq9smhx 16i6r5tghg4o3.2etdkhfri55bw 3g9jvhow86172.3gpy7n4hsg1rm 2ypg7k5uv2z56.1l5rnshjufqck 28wgtmvhdpm6i.qgm3ufyadxeg 3h2rs82ps2lir.3f5ioc5m95vkf 2e63x3fz8bl04.zuvvxfh42jq9 2tmh0jm6em664.z34ftponelrr ga3a8rx5usnf.3puzjdgiosd8m 29wupctvqi7qe.1u5pv8hoy7oeo geko74h65srd.jx8yzmtsdqtb
+jsOutputName=kotlin-css
+abi_version=1.8.0
+metadata_version=1.4.1

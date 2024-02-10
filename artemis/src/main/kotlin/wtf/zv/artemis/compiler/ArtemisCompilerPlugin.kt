@@ -39,7 +39,7 @@ internal class ArtemisCompilerPlugin : ArtemisPluginBase {
 
     private fun transpileFiles(project: Project) {
         val kotlinMultiplatform = project.extensions.getByType(KotlinMultiplatformExtension::class.java)
-        val jsMainSourceSet = kotlinMultiplatform.sourceSets.getByName(jsMainSourceSet).kotlin.srcDirs.toSet()
+        val jsMainSourceSet = kotlinMultiplatform.sourceSets.getByName(wtf.zv.artemis.compiler.ArtemisCompilerPlugin.Companion.jsMainSourceSet).kotlin.srcDirs.toSet()
 
         artemisFileParser.parseSourceSets(jsMainSourceSet, project)
     }

@@ -5,7 +5,7 @@ Artemis is an opinionated framework for creating toy websites and web apps. Arte
 
 The KMP project offers first class transpilation/browser support for most packages from the Kotlin and Java standard libraries [6] and also provides a number of auto-generated JavaScript bindings [7] and browser entrypoints [8] using Dukat [9] and interoperability-focused APIs [10] to support depending on JavaScript/TypeScript libraries from Kotlin projects [11].
 
-The long-term vision of Artemis is to expose a framework for writing progressively enhanced server-side rendered (SSR) web apps with island based client hydration, allowing a static-first rendering approach where interactivity is a scoped concern, only being shipped what JavaScript (or Web Assembly) is required. This architecture reduces bundle size, improves loading speeds and allows graceful degradation for non-JavaScript clients.
+The long-term vision of Artemis is to expose a framework for writing progressively enhanced server-side rendered (SSR) with optional support for client-side interactivity provided by Kotlin KMP.
 
 planned features (unordered):
   - transition to the Kotlin K2 compiler [12] once it fully supports KMP.
@@ -22,12 +22,15 @@ planned features (unordered):
 
 project structure:
   - artemis
-    - core      - core library
-    - compiler  - plugin support; generates JVM-targeted bindings from KMP JS code and transpiles into JavaScript
-    - plugin    - Gradle plugin; registers client-facing Gradle tasks and the compiler plugin
+    - core       - core library
+    - compiler   - plugin support; generates JVM-targeted bindings from KMP JS code and transpiles into JavaScript
+    - plugin     - Gradle plugin; registers client-facing Gradle tasks and the compiler plugin
+  - artemis-common
+    -
   - demo
-    - jvmMain   - KMP JVM-based demo
-    - jsMain    - KMP JS-targeting Kotlin demo
+    - commonMain - KMP Shared objects (specifically HTML Element IDs)
+    - jvmMain    - KMP JVM-based demo
+    - jsMain     - KMP JS-targeting Kotlin demo
 
 references:
   - 1: https://kotlinlang.org/docs/multiplatform.html

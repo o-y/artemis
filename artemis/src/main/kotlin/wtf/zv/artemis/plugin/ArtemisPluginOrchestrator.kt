@@ -2,7 +2,6 @@ package wtf.zv.artemis.plugin
 
 import org.gradle.api.Project
 import org.gradle.api.Task
-import org.gradle.api.tasks.TaskProvider
 
 /** Singleton allowing plugins to register tasks in the Artemis Gradle Build Graph. */
 internal object ArtemisPluginOrchestrator {

@@ -1,13 +1,14 @@
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.Mode
+
 plugins {
     kotlin("multiplatform") version "1.9.0"
     kotlin("plugin.serialization") version "1.9.0"
 
     java
+    application
 
     id("wtf.zv.artemis.plugin") version "0.0.1"
 }
-
-//apply<wtf.zv.artemis.plugin.ArtemisCorePlugin>()
 
 group = "wtf.zv.artemis"
 version = "0.0.1"
@@ -19,11 +20,17 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/ktor/eap")
 }
 
+application {
+    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
+    mainClass.set("wtf.zv.demo.DemoEntryPointKt")
+}
+
 kotlin {
     jvm {
-        mainRun {
-            mainClass.set("wtf.zv.demo.DemoEntryPoint")
-        }
+        // mainRun is experimental and does not work with ktor.development
+        // mainRun {
+        //     mainClass.set("wtf.zv.demo.DemoEntryPointKt")
+        // }
 
         withJava()
 
@@ -49,6 +56,7 @@ kotlin {
                     library = "ARTEMIS_ENTRYPOINT"
                 }
 
+                mode = Mode.DEVELOPMENT
                 sourceMaps = false
                 showProgress = true
             })
@@ -88,6 +96,12 @@ kotlin {
                 // serialization
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core-js:1.6.0-RC")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0-RC")
+            }
+        }
+
+        commonMain {
+            dependencies {
+                implementation("wtf.zv.artemis:common:0.0.1")
             }
         }
     }

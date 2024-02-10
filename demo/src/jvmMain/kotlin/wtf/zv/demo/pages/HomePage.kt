@@ -4,14 +4,17 @@ import kotlinx.css.*
 import kotlinx.css.properties.transform
 import kotlinx.css.properties.translate
 import kotlinx.html.*
+import wtf.zv.artemis.common.unaryPlus
 import wtf.zv.artemis.core.web.page.PagePlugin
 import wtf.zv.artemis.core.web.page.api.createBody
 import wtf.zv.artemis.core.web.page.api.createHead
+import wtf.zv.artemis.core.web.page.api.css.createPageStyleSheet
+import wtf.zv.artemis.core.web.page.api.css.inlineStyle
 import wtf.zv.artemis.core.web.page.api.ofPath
 import wtf.zv.artemis.core.web.page.javascript.JavaScriptKey
-import wtf.zv.artemis.core.web.std.css.createPageStyleSheet
-import wtf.zv.artemis.core.web.std.css.inlineStyle
 import wtf.zv.demo.ArtemisBuildGraphLastFmStatusApi.GET_LAST_FM_STATUS
+import wtf.zv.demo.pages.HomePage.HOVER_CURSOR_CLASS
+import wtf.zv.demo.pages.HomePage.LAST_FM_DIV_ID
 
 @JavaScriptKey(GET_LAST_FM_STATUS::class)
 class HomePagePlugin : PagePlugin() {
@@ -28,7 +31,7 @@ class HomePagePlugin : PagePlugin() {
     )
 
     val contact = mapOf(
-      "post   " to "zv@zv.wtf",
+      "mail   " to "zv@zv.wtf",
       "matrix " to "@zv:zv.wtf"
     )
 
@@ -67,7 +70,7 @@ class HomePagePlugin : PagePlugin() {
     }
 
     pre {
-      id = "LAST_FM_STATUS"
+      id = + LAST_FM_DIV_ID
       style = inlineStyle {
         color = hex(0xbdc3c7)
         marginTop = 80.px
@@ -83,7 +86,7 @@ class HomePagePlugin : PagePlugin() {
       width = 200.px
     }
 
-    rule(".img_1") {
+    ".img_1" {
       position = Position.relative
       zIndex = 5
       transform {
@@ -91,7 +94,7 @@ class HomePagePlugin : PagePlugin() {
       }
     }
 
-    rule(".img_2") {
+    ".img_2" {
       position = Position.absolute
       opacity = 0.5
       filter = "saturate(0.7) blur(1px)"
@@ -101,17 +104,19 @@ class HomePagePlugin : PagePlugin() {
       }
     }
 
-    rule(".img_3") {
+    ".img_3" {
       position = Position.absolute
       opacity = 0.5
-      filter = "contrast(1) saturate(2) opacity(0.75) blur(1.5px)" // TODO: Write a DSL for this, similar to transform.
+
+      // TODO: Write a DSL for this, similar to transform.
+      filter = "contrast(1) saturate(2) opacity(0.75) blur(1.5px)"
 
       transform {
         translate(140.px * -1, 60.px)
       }
     }
 
-    rule(".hover-cursor") {
+    ".$HOVER_CURSOR_CLASS" {
       cursor = Cursor.pointer
     }
   }

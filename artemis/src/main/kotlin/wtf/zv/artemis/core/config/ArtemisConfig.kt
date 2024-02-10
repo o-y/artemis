@@ -1,6 +1,7 @@
 package wtf.zv.artemis.core.config
 
 import io.ktor.server.application.*
+import org.jetbrains.kotlin.builtins.StandardNames.FqNames.list
 import wtf.zv.artemis.core.web.page.PagePlugin
 import kotlin.reflect.KClass
 import kotlin.reflect.full.createInstance
@@ -27,6 +28,9 @@ class ArtemisConfig private constructor() {
     /** Client-provided Ktor Modules */
     val ktorApplicationModules = mutableSetOf<Application.() -> Unit>()
 
+    /** Specifies filesystem paths on which the development server is hot reloaded on modifications. */
+    val hotReloadWatchPaths: MutableSet<String> = mutableSetOf()
+
     /** Builder for [ArtemisConfig]. */
     class Builder {
         private val config = ArtemisConfig()
@@ -51,9 +55,14 @@ class ArtemisConfig private constructor() {
             config.pagePlugins.add(pagePlugin.createInstance())
         }
 
-        /** @see [ArtemisConfig.ktorApplicationModules]*/
+        /** @see [ArtemisConfig.ktorApplicationModules]. */
         fun installApplicationKtorModule(module: Application.() -> Unit) = apply {
             config.ktorApplicationModules.add(module)
+        }
+
+        /** @see [ArtemisConfig.hotReloadWatchPaths]. */
+        fun setHotReloadWatchPaths(set: Set<String>) = apply {
+            config.hotReloadWatchPaths += set
         }
 
         /** Builds the [ArtemisConfig] instance. */

@@ -3,12 +3,10 @@ package wtf.zv.artemis.core.web.page
 import wtf.zv.artemis.core.web.page.api.PageContents
 import wtf.zv.artemis.core.web.page.api.PagePath
 import wtf.zv.artemis.core.web.page.api.createHead
-import wtf.zv.artemis.core.web.page.api.PageStyleSheet
-import wtf.zv.artemis.core.web.page.javascript.internal.JavaScriptKeyAnnotationProcessor
+import wtf.zv.artemis.core.web.page.api.css.PageStyleSheet
 import wtf.zv.artemis.core.web.page.javascript.internal.JavaScriptKeyAnnotationProcessor.extractPluginKeys
-import wtf.zv.artemis.core.web.std.css.createPageStyleSheet
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.seconds
+import wtf.zv.artemis.core.web.page.api.css.createPageStyleSheet
+import wtf.zv.artemis.core.web.page.render.cache.CacheStrategyConfig
 
 /**
  * Base entrypoint for creating web pages.
@@ -52,15 +50,8 @@ abstract class PagePlugin {
      */
     open fun provideStyleSheet(): PageStyleSheet = createPageStyleSheet {}
 
-    /**
-     * Defines how long the page should be cached.
-     *
-     * TODO: This is not yet implemented. The idea of this method is to provide a timeout in which the page contents is
-     *       cached by artemis rather than re-executing any dynamic Kotlin code. Similarly an @BarePage annotation
-     *       should be defined which allows Artemis to optimise successive page loads by indefinitely caching pages.
-     *       As a bonus this will also allows clients to target their build with the FileBuildRunner.
-     */
-    open fun provideCacheExpiry(): Duration = 0.seconds
+    /** Defines how long the page should be cached. */
+    // open fun provideCacheStrategy(): CacheStrategyConfig = CacheStrategyConfig()
 
     /** INTERNAL API - Provides any associated JavaScript API calls formatted as a String [Set]. */
     internal fun provideJavaScriptApiCalls() = extractPluginKeys(this)

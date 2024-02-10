@@ -12,7 +12,7 @@ internal class ArtemisBuildGraphGenerator {
     /** Generates and returns a Set of Artemis build graph files represented as [FileSpec]s. */
     internal fun generateBuildGraphFiles(functionKeys: List<ArtemisFunctionKey>): Set<FileSpec> {
         return mutableSetOf<FileSpec>().apply {
-            add(generateBuildGraphRoot())
+            if (SHOULD_GENERATE_BUILD_GRAPH_ROOT) add(generateBuildGraphRoot())
             addAll(generateBuildGraphFileSet(functionKeys))
         }.toSet()
     }
@@ -25,5 +25,10 @@ internal class ArtemisBuildGraphGenerator {
         return groupByPackage(functionKeys).map {
             artemisClassGenerator.generateSubClassedArtemisBuildGraphFile(it)
         }.toSet()
+    }
+
+    private companion object {
+        /** Whether the Artemis Build Graph Root class should be auto-generated. */
+        private const val SHOULD_GENERATE_BUILD_GRAPH_ROOT = false
     }
 }

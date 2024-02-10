@@ -3,7 +3,7 @@ package wtf.zv.demo
 import wtf.zv.artemis.core.config.ArtemisConfig.Dsl.artemisServerConfig
 import wtf.zv.artemis.core.server.ArtemisClient
 import wtf.zv.demo.pages.HomePagePlugin
-import wtf.zv.demo.pages.JavaScriptPagePlugin
+import wtf.zv.demo.pages.blog.ReadingListPagePlugin
 
 /**
  * TODOs:
@@ -11,15 +11,13 @@ import wtf.zv.demo.pages.JavaScriptPagePlugin
  *    (ServerRunner, FileBuildRunner). This will allow clients to either target building static content to artemis_dist
  *    OR support clients running Kotlin code on the server before returning HTML.
  */
-class DemoEntryPoint {
-    companion object {
-        @JvmStatic
-        fun main(args: Array<String>) {
-            ArtemisClient.createWithConfig(artemisServerConfig {
-                serverPort(port = 4665)
-                installPagePlugin(HomePagePlugin::class)
-                installPagePlugin(JavaScriptPagePlugin::class)
-            })
-        }
-    }
+fun main() {
+    ArtemisClient.createWithConfig(artemisServerConfig {
+        serverPort(port = 4665)
+
+        setHotReloadWatchPaths(setOf("classes"))
+
+        installPagePlugin(HomePagePlugin::class)
+        installPagePlugin(ReadingListPagePlugin::class)
+    })
 }

@@ -27,5 +27,5 @@ object ArtemisConstants {
      *
      * TODO: Allow clients to configure this.
      */
-    const val DIV_ID_SUFFIX = "artemis_"
+    const val DIV_ID_SUFFIX = "artemis-ssr:"
 }

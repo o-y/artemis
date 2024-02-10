@@ -10,7 +10,5 @@ object ArtemisClient {
      *
      * NOTE: This is a blocking call, executing on the current thread.
      */
-    fun createWithConfig(
-        artemisConfig: ArtemisConfig,
-    ) = ArtemisServerCore(artemisConfig).startServer()
+    fun createWithConfig(artemisConfig: ArtemisConfig) = ArtemisServerCore(artemisConfig).startServer()
 }

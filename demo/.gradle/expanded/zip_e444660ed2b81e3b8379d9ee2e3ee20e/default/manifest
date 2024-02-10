@@ -1,0 +1,8 @@
+abi_version=1.8.0
+builtins_platform=JS
+compiler_version=1.9.0
+depends=org.jetbrains.kotlin\:kotlin-dom-api-compat kotlin
+metadata_version=1.4.1
+serializedIrFileFingerprints=1rv3c8kb22oac.32oduagm44j1m 1qyiw0yop6a8l.2s4s900glh86r
+serializedKlibFingerprint=zadjr5qm3hg4.1w6ximqzkjugo
+unique_name=wtf.zv.artemis\:artemis-common

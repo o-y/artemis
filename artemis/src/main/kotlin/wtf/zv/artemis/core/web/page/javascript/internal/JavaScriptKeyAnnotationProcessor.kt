@@ -35,7 +35,7 @@ internal object JavaScriptKeyAnnotationProcessor {
     }
 
     private fun formatToApiCall(artemisBuildGraphRoot: ArtemisBuildGraphRoot): String {
-        val globalContext = "window['%s']"
+        val globalContext = "%s"
         val packageName = artemisBuildGraphRoot.packageName
         val functionCall = "%s();"
 
