@@ -20,14 +20,25 @@ repositories {
 
 kotlin {
     jvm()
-    js()
+
+    js {
+        browser()
+    }
 
     sourceSets {
-        all {
-            withSourcesJar(publish = true)
+        withSourcesJar(publish = true)
 
+        commonMain {
             dependencies {
                 implementation(kotlin("stdlib"))
+            }
+        }
+
+        js {
+            dependencies {
+                // kotlinx html / css
+                implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.604")
             }
         }
     }

@@ -11,11 +11,7 @@ import kotlinx.html.js.onClickFunction
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json.Default.decodeFromString
-import org.w3c.dom.Document
-import org.w3c.dom.Element
-import wtf.zv.artemis.common.ArtemisBaseElementIdentifier
-import wtf.zv.artemis.common.id
-import wtf.zv.artemis.common.unaryPlus
+import wtf.zv.artemis.common.js.getElementById
 import wtf.zv.demo.pages.HomePage
 import wtf.zv.demo.pages.HomePage.HOVER_CURSOR_CLASS
 
@@ -32,7 +28,7 @@ fun getLastFmStatus() {
                 classes += HOVER_CURSOR_CLASS.toString()
                 onClickFunction = {
                     window.open(
-                        url  = lastFmStatus.trackUrl,
+                        url = lastFmStatus.trackUrl,
                         target = "blank"
                     )
                 }
@@ -64,9 +60,3 @@ private suspend fun fetchLastFmStatus(): LastFmResponse {
         .then { decodeFromString<LastFmResponse>(it) }
         .await()
 }
-
-// TODO: Provide this as part of the artemis-common framework.
-private fun Document.getElementById(id: ArtemisBaseElementIdentifier): Element =
-    // It's safe to use the non-null cast operator here because this takes a ArtemisBaseElementIdentifier
-    // enum which we can assume maps to a valid ID.
-    document.getElementById(+ id)!!

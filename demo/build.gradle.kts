@@ -68,10 +68,6 @@ kotlin {
             dependencies {
                 implementation("wtf.zv.artemis:core:0.0.1")
 
-                // kotlinx html + css
-                implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.604")
-
                 // common
                 implementation("com.google.guava:guava:32.1.1-jre")
             }
@@ -86,9 +82,8 @@ kotlin {
                 // std
                 implementation(kotlin("stdlib-js"))
 
-                // kotlinx html / browser
-                implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.604")
+                // artemis
+                implementation("wtf.zv.artemis:common:0.0.1")
 
                 // coroutines
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.7.3")
@@ -101,7 +96,12 @@ kotlin {
 
         commonMain {
             dependencies {
+                // artemis
                 implementation("wtf.zv.artemis:common:0.0.1")
+
+                // kotlinx html / css
+                implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.604")
             }
         }
     }
