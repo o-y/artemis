@@ -31,10 +31,4 @@ inline fun createPageStyleSheet(crossinline block: CssBuilder.() -> Unit = {}) =
         cssBuilder = CssBuilder().apply(block),
         styleSheetType = StyleSheetType.PAGE,
         styleSheetDialect = StyleSheetDialect.SCSS,
-    ).also {
-//        println("---------------------------")
-//        println(it.getCssBuilder().toString())
-//        println("---------------------------")
-//        println(it.toString())
-//        println("---------------------------")
-    }
+    )

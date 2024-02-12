@@ -1,12 +1,16 @@
 package wtf.zv.artemis.demo
 
-import kotlinx.css.i
 import wtf.zv.artemis.core.config.ArtemisConfig.Dsl.artemisServerConfig
-import wtf.zv.artemis.core.server.ArtemisClient
+import wtf.zv.artemis.core.server.ArtemisVerticleFactory
 
 /** Sample demo app, used to verify functionality. */
-fun main() {
-    ArtemisClient.createWithConfig(artemisServerConfig {
-        serverPort(port = 4665)
-    })
+class EmbeddedDemo {
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            ArtemisVerticleFactory.createVerticleWithConfig(artemisServerConfig {
+                serverPort(port = 4665)
+            })
+        }
+    }
 }

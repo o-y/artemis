@@ -20,18 +20,21 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/ktor/eap")
 }
 
+val mainVerticleName = "wtf.zv.demo.DemoEntryPoint"
+val launcherClassName = "io.vertx.core.Launcher"
+val watchForChange = "src/**/*"
+val doOnChange = "${projectDir}/gradlew classes"
+
 application {
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
-    mainClass.set("wtf.zv.demo.DemoEntryPointKt")
+    mainClass.set(launcherClassName)
+}
+
+tasks.withType<JavaExec> {
+    args = listOf("run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
 }
 
 kotlin {
     jvm {
-        // mainRun is experimental and does not work with ktor.development
-        // mainRun {
-        //     mainClass.set("wtf.zv.demo.DemoEntryPointKt")
-        // }
-
         withJava()
 
         testRuns["test"].executionTask.configure {
@@ -70,6 +73,15 @@ kotlin {
 
                 // common
                 implementation("com.google.guava:guava:32.1.1-jre")
+
+                // vertx
+                implementation(platform("io.vertx:vertx-stack-depchain:4.5.3"))
+                implementation("io.vertx:vertx-web")
+                implementation("io.vertx:vertx-lang-kotlin-coroutines")
+                implementation("io.vertx:vertx-lang-kotlin")
+
+                // netty support
+                implementation("io.netty:netty-resolver-dns-native-macos:4.1.106.Final:osx-aarch_64")
             }
 
             kotlin(Action {

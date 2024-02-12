@@ -1,10 +1,6 @@
 package wtf.zv.artemis.core.config
 
-import io.ktor.server.application.*
-import org.jetbrains.kotlin.builtins.StandardNames.FqNames.list
 import wtf.zv.artemis.core.web.page.PagePlugin
-import kotlin.reflect.KClass
-import kotlin.reflect.full.createInstance
 
 /**
  * Configuration class for the Artemis library.
@@ -24,9 +20,6 @@ class ArtemisConfig private constructor() {
 
     /** Client-provided [PagePlugin]'s hosted by the server. */
     val pagePlugins: MutableSet<PagePlugin> = mutableSetOf()
-
-    /** Client-provided Ktor Modules */
-    val ktorApplicationModules = mutableSetOf<Application.() -> Unit>()
 
     /** Specifies filesystem paths on which the development server is hot reloaded on modifications. */
     val hotReloadWatchPaths: MutableSet<String> = mutableSetOf()
@@ -51,13 +44,8 @@ class ArtemisConfig private constructor() {
         }
 
         /** @see [ArtemisConfig.pagePlugins]. */
-        fun installPagePlugin(pagePlugin: KClass<out PagePlugin>) = apply {
-            config.pagePlugins.add(pagePlugin.createInstance())
-        }
-
-        /** @see [ArtemisConfig.ktorApplicationModules]. */
-        fun installApplicationKtorModule(module: Application.() -> Unit) = apply {
-            config.ktorApplicationModules.add(module)
+        fun installPagePlugin(pagePlugin: PagePlugin) = apply {
+            config.pagePlugins.add(pagePlugin)
         }
 
         /** @see [ArtemisConfig.hotReloadWatchPaths]. */

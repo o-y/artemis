@@ -6,13 +6,18 @@ import wtf.zv.artemis.core.web.page.PagePlugin
 
 /** Renders the [PagePlugin]'s HTML code. */
 internal fun PagePlugin.parseToHtmlString(): String {
+    val body = provideBody().getHtml()
+
     return buildString {
         append("<!DOCTYPE html>\n")
         appendHTML().html {
             renderPageHead(pagePlugin = this@parseToHtmlString)
 
             body {
-                unsafe { + provideBody().getHtml() }
+                unsafe {
+                    + body
+                }
+
                 renderPageScripts(pagePlugin = this@parseToHtmlString)
             }
         }

@@ -2,6 +2,7 @@ plugins {
     // lang support
     kotlin("jvm") version "1.9.0"
     java
+    application
 
     // plugin support
     id("com.gradle.plugin-publish") version "1.2.0"
@@ -16,18 +17,31 @@ repositories {
     mavenCentral()
 }
 
+val mainVerticleName = "wtf.zv.artemis.demo.EmbeddedDemo"
+val launcherClassName = "io.vertx.core.Launcher"
+
+val watchForChange = "src/**/*"
+val doOnChange = "${projectDir}/gradlew classes"
+
+tasks.withType<JavaExec> {
+    args = listOf("run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
+}
+
+application {
+    mainClass.set(launcherClassName)
+}
+
 dependencies {
     // plugin api
     implementation(gradleApi())
     implementation(kotlin("stdlib"))
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21")
 
-    // ktor - http server
-    implementation("io.ktor:ktor-server-core-jvm:2.3.2")
-    implementation("io.ktor:ktor-server-netty-jvm:2.3.2")
-    implementation("io.ktor:ktor-server-status-pages-jvm:2.3.2")
-    implementation("io.ktor:ktor-server-default-headers-jvm:2.3.2")
-    implementation("io.ktor:ktor-server-html-builder-jvm:2.3.2")
+    // vertx - http server
+    implementation(platform("io.vertx:vertx-stack-depchain:4.5.3"))
+    implementation("io.vertx:vertx-web")
+    implementation("io.vertx:vertx-lang-kotlin-coroutines")
+    implementation("io.vertx:vertx-lang-kotlin")
 
     // kotlinx html + css
     implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
@@ -37,7 +51,7 @@ dependencies {
     implementation("com.squareup:kotlinpoet-ksp:1.14.2")
 
     // logger
-    implementation("ch.qos.logback:logback-classic:1.4.7")
+    implementation("ch.qos.logback:logback-classic:1.4.14")
 
     // common
     implementation("com.google.guava:guava:32.1.1-jre")
