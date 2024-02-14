@@ -2,11 +2,16 @@ package wtf.zv.artemis.core.web.page.render.internal
 
 import kotlinx.html.*
 import wtf.zv.artemis.core.config.ArtemisConstants.ARTEMIS_JAVASCRIPT_BUNDLE_URL
+import wtf.zv.artemis.core.config.ArtemisConstants.ARTEMIS_WEBHOOK_JAVASCRIPT_URL
 import wtf.zv.artemis.core.web.page.PagePlugin
 
 /** [HTML] plugin - renders the HTML Head provided by the [pagePlugin]. */
 fun HTML.renderPageHead(pagePlugin: PagePlugin) {
-    if (pagePlugin.hasHead() || pagePlugin.hasStyle() || pagePlugin.hasJavaScript()) {
+    // TODO: Wire up this to the config, maybe I should create a
+    //  global config state, or ideally add Dagger.
+    val isDevelopmentMode = true
+
+    if (pagePlugin.hasHead() || pagePlugin.hasStyle() || pagePlugin.hasJavaScript() || isDevelopmentMode) {
         head {
             if (pagePlugin.hasHead()) {
                 unsafe {
@@ -26,6 +31,13 @@ fun HTML.renderPageHead(pagePlugin: PagePlugin) {
                 script {
                     type = "application/javascript"
                     src = ARTEMIS_JAVASCRIPT_BUNDLE_URL
+                }
+            }
+
+            if (isDevelopmentMode) {
+                script {
+                    type = "application/javascript"
+                    src = ARTEMIS_WEBHOOK_JAVASCRIPT_URL
                 }
             }
         }

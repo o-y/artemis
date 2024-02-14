@@ -6,7 +6,7 @@ import wtf.zv.artemis.core.web.page.PagePlugin
  * Configuration class for the Artemis library.
  *
  * TODO: Migrate to ExplicitBackingFields when the KMP K2 compiler supports them in production. This provides a
- *       boilerplate-sans approach to exposing immutable library-wide states with a mutable DSL.
+ *       boilerplate-free approach to exposing immutable library-wide states with a mutable DSL.
  */
 class ArtemisConfig private constructor() {
     /** The port number on which the server should listen. */
@@ -21,8 +21,8 @@ class ArtemisConfig private constructor() {
     /** Client-provided [PagePlugin]'s hosted by the server. */
     val pagePlugins: MutableSet<PagePlugin> = mutableSetOf()
 
-    /** Specifies filesystem paths on which the development server is hot reloaded on modifications. */
-    val hotReloadWatchPaths: MutableSet<String> = mutableSetOf()
+    /** Specifies whether Artemis is running under development mode, thereby enabling features such as hot reloading. */
+    var isDevelopmentMode: Boolean = false
 
     /** Builder for [ArtemisConfig]. */
     class Builder {
@@ -48,9 +48,9 @@ class ArtemisConfig private constructor() {
             config.pagePlugins.add(pagePlugin)
         }
 
-        /** @see [ArtemisConfig.hotReloadWatchPaths]. */
-        fun setHotReloadWatchPaths(set: Set<String>) = apply {
-            config.hotReloadWatchPaths += set
+        /** @see [ArtemisConfig.isDevelopmentMode]. */
+        fun setDevelopmentMode(isDevelopmentMode: Boolean) = apply {
+            config.isDevelopmentMode = isDevelopmentMode
         }
 
         /** Builds the [ArtemisConfig] instance. */

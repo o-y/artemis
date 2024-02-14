@@ -1,8 +1,9 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.Mode
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("multiplatform") version "1.9.0"
-    kotlin("plugin.serialization") version "1.9.0"
+    kotlin("multiplatform") version "2.0.0-Beta3"
+    kotlin("plugin.serialization") version "2.0.0-Beta3"
 
     java
     application
@@ -20,6 +21,7 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/ktor/eap")
 }
 
+// JVM Application "run" setup
 val mainVerticleName = "wtf.zv.demo.DemoEntryPoint"
 val launcherClassName = "io.vertx.core.Launcher"
 val watchForChange = "src/**/*"
@@ -33,13 +35,10 @@ tasks.withType<JavaExec> {
     args = listOf("run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
 }
 
+// KMP setup
 kotlin {
     jvm {
         withJava()
-
-        testRuns["test"].executionTask.configure {
-            useJUnitPlatform()
-        }
     }
 
     js(IR) {
@@ -75,7 +74,7 @@ kotlin {
                 implementation("com.google.guava:guava:32.1.1-jre")
 
                 // vertx
-                implementation(platform("io.vertx:vertx-stack-depchain:4.5.3"))
+                implementation(project.dependencies.platform("io.vertx:vertx-stack-depchain:4.5.3"))
                 implementation("io.vertx:vertx-web")
                 implementation("io.vertx:vertx-lang-kotlin-coroutines")
                 implementation("io.vertx:vertx-lang-kotlin")

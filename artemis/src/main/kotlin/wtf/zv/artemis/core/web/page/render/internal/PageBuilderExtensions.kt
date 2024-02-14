@@ -10,7 +10,10 @@ internal fun PagePlugin.parseToHtmlString(): String {
 
     return buildString {
         append("<!DOCTYPE html>\n")
-        appendHTML().html {
+        appendHTML(
+            prettyPrint = true, // TODO: Make this dependent on the isDevelopmentMode variable.
+            xhtmlCompatible = false
+        ).html {
             renderPageHead(pagePlugin = this@parseToHtmlString)
 
             body {

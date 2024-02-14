@@ -1,6 +1,8 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     // language support
-    kotlin("multiplatform") version "1.9.0"
+    kotlin("multiplatform") version "2.0.0-Beta3"
     java
     application
 

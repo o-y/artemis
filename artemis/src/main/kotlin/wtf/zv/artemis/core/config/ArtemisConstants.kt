@@ -16,6 +16,17 @@ object ArtemisConstants {
     const val ARTEMIS_JAVASCRIPT_BUNDLE_ENTRY_POINT = "ARTEMIS_ENTRYPOINT"
 
     /**
+     * The default suffix for top-level HTML Div elements rendered using [createBody].
+     *
+     * TODO: Allow clients to configure this.
+     */
+    const val DIV_ID_SUFFIX = "artemis-ssr:"
+
+    /////////////////////////////
+    /// PUBLIC ARTEMIS ROUTES ///
+    /////////////////////////////
+
+    /**
      * Generated JavaScript bundle API URL.
      *
      * TODO: Allow clients to configure this.
@@ -23,9 +34,9 @@ object ArtemisConstants {
     const val ARTEMIS_JAVASCRIPT_BUNDLE_URL = "/_/artemis/build/artemis_bundle.js"
 
     /**
-     * The default suffix for top-level HTML Div elements rendered using [createBody].
+     * Generated WebHook JavaScript bundle API URL.
      *
      * TODO: Allow clients to configure this.
      */
-    const val DIV_ID_SUFFIX = "artemis-ssr:"
+    const val ARTEMIS_WEBHOOK_JAVASCRIPT_URL = "/_/artemis/build/artemis_webhook.js"
 }

@@ -1,6 +1,6 @@
 plugins {
     // lang support
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "2.0.0-Beta3"
     java
     application
 
@@ -58,6 +58,10 @@ dependencies {
 
     // compiler
     implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.9.0")
+
+    // netty support
+    // TODO: This should be a downstream dependency
+    implementation("io.netty:netty-resolver-dns-native-macos:4.1.106.Final:osx-aarch_64")
 }
 
 gradlePlugin {
