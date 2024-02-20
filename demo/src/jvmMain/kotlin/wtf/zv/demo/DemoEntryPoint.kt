@@ -5,7 +5,6 @@ import wtf.zv.artemis.core.config.ArtemisConfig.Dsl.artemisServerConfig
 import wtf.zv.artemis.core.server.ArtemisVerticleFactory.createVerticleWithConfig
 import wtf.zv.demo.pages.HomePagePlugin
 import wtf.zv.demo.pages.blog.ReadingListPagePlugin
-import java.lang.RuntimeException
 
 /**
  * TODOs:
@@ -17,8 +16,7 @@ class DemoEntryPoint : CoroutineVerticle() {
     override suspend fun start() {
         val artemisVerticle = createVerticleWithConfig(artemisServerConfig {
             serverPort(port = 4665)
-
-            setHotReloadWatchPaths(setOf("build/classes", "src"))
+            setDevelopmentMode(true)
 
             installPagePlugin(HomePagePlugin())
             installPagePlugin(ReadingListPagePlugin())
