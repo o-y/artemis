@@ -21,7 +21,7 @@ planned features (unordered):
     - introduce a File target so entirely pure projects can generate HTML files without the need for a web server.
 
 project structure:
-  - artemis
+  - artemis-plugin
     - compiler   - plugin support; generates JVM-targeted bindings from KMP JS code and transpiles into JavaScript
     - plugin     - Gradle plugin; registers client-facing Gradle tasks and the compiler plugin
                  - NOTE: this exists as a separate artefact because multiplatform projects can't depend on the Gradle
