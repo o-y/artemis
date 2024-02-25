@@ -68,9 +68,7 @@ kotlin {
     sourceSets {
         val jvmMain by getting {
             dependencies {
-                implementation("wtf.zv.artemis:core:0.0.1")
-
-                // common
+                // google common
                 implementation("com.google.guava:guava:32.1.1-jre")
 
                 // vertx

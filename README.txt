@@ -22,14 +22,14 @@ planned features (unordered):
 
 project structure:
   - artemis
-    - core       - core library
     - compiler   - plugin support; generates JVM-targeted bindings from KMP JS code and transpiles into JavaScript
     - plugin     - Gradle plugin; registers client-facing Gradle tasks and the compiler plugin
+                 - NOTE: this exists as a separate artefact because multiplatform projects can't depend on the Gradle
+                         plugin dependency
   - artemis-common
-    - common     - Shared identifiers infrastructure (providing the framework to expose HTML Element IDs)
+    - core       - core library
+    - common     - Shared identifiers' infrastructure (providing the framework to expose HTML Element IDs)
     - jsMain     - JS-targeting framework support
-                 - NOTE: there exists a separate common artefact because KMP projects can't depend on the Gradle
-                   plugin dependency
   - demo
     - commonMain - KMP Shared objects (specifically HTML Element IDs)
     - jvmMain    - KMP JVM-based demo

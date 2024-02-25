@@ -37,31 +37,11 @@ dependencies {
     implementation(kotlin("stdlib"))
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21")
 
-    // vertx - http server
-    implementation(platform("io.vertx:vertx-stack-depchain:4.5.3"))
-    implementation("io.vertx:vertx-web")
-    implementation("io.vertx:vertx-lang-kotlin-coroutines")
-    implementation("io.vertx:vertx-lang-kotlin")
-
-    // kotlinx html + css
-    implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.604")
-
     // poet
     implementation("com.squareup:kotlinpoet-ksp:1.14.2")
 
-    // logger
-    implementation("ch.qos.logback:logback-classic:1.4.14")
-
-    // common
-    implementation("com.google.guava:guava:32.1.1-jre")
-
     // compiler
     implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.9.0")
-
-    // netty support
-    // TODO: This should be a downstream dependency
-    implementation("io.netty:netty-resolver-dns-native-macos:4.1.106.Final:osx-aarch_64")
 }
 
 gradlePlugin {
