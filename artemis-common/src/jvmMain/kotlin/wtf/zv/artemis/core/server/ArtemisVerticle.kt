@@ -13,7 +13,7 @@ class ArtemisVerticle internal constructor(
     override suspend fun start() {
         val router = withRouter {
             installPagePluginsModule(artemisConfig.pagePlugins)
-            installStaticScriptRouteModule(artemisConfig)
+            installStaticScriptRouteModule()
         }
 
         vertx.createHttpServer()

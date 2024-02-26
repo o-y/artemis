@@ -26,7 +26,6 @@ internal object ArtemisPluginOrchestrator {
                         println("[Artemis @plugin]: Executing Gradle Tasks: $taskSet")
                     }
 
-                    // for some reason it.dependsOn(taskSet) causes Stackoverflow errors
                     it.dependsOn(taskSet)
                 }
             }

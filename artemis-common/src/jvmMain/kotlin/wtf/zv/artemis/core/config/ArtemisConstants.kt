@@ -32,11 +32,4 @@ object ArtemisConstants {
      * TODO: Allow clients to configure this.
      */
     const val ARTEMIS_JAVASCRIPT_BUNDLE_URL = "/_/artemis/build/artemis_bundle.js"
-
-    /**
-     * Generated WebHook JavaScript bundle API URL.
-     *
-     * TODO: Allow clients to configure this.
-     */
-    const val ARTEMIS_WEBHOOK_JAVASCRIPT_URL = "/_/artemis/build/artemis_webhook.js"
 }

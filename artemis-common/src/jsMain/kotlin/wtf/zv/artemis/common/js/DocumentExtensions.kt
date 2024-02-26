@@ -3,7 +3,6 @@ package wtf.zv.artemis.common.js
 import kotlinx.browser.document
 import org.w3c.dom.Document
 import org.w3c.dom.Element
-import org.w3c.dom.WebSocket
 import wtf.zv.artemis.common.ArtemisBaseElementIdentifier
 import wtf.zv.artemis.common.unaryPlus
 

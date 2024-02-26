@@ -50,9 +50,6 @@ abstract class PagePlugin {
      */
     open fun provideStyleSheet(): PageStyleSheet = createPageStyleSheet {}
 
-    /** Defines how long the page should be cached. */
-    // open fun provideCacheStrategy(): CacheStrategyConfig = CacheStrategyConfig()
-
     /** INTERNAL API - Provides any associated JavaScript API calls formatted as a String [Set]. */
     internal fun provideJavaScriptApiCalls() = extractPluginKeys(this)
 }

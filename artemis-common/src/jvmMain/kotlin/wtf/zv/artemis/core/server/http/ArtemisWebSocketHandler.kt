@@ -19,6 +19,7 @@ class ArtemisWebSocketHandler(
 
         webSocket.textMessageHandler { message ->
             if (message == CLIENT_PING) {
+                println("[Artemis @core]: WebSocket - got a client ping: $message")
                 webSocket.writeTextMessage(SERVER_HASH_ACK.format(deploymentHash.value))
             }
         }

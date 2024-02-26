@@ -34,11 +34,11 @@ kotlin {
             }
         }
 
-        js {
+        val jsMain by getting {
             dependencies {
-                // kotlinx html / css
-                implementation("org.jetbrains.kotlinx:kotlinx-html:0.8.1")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.604")
+                // ktor support
+                implementation("io.ktor:ktor-client-core:2.3.8") // websocket
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.8")
             }
         }
 

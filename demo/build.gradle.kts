@@ -32,7 +32,12 @@ application {
 }
 
 tasks.withType<JavaExec> {
-    args = listOf("run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
+    args = listOf(
+        "run", mainVerticleName,
+        "--launcher-class=$launcherClassName",
+//        "--redeploy=$watchForChange",
+//        "--on-redeploy=$doOnChange"
+    )
 }
 
 // KMP setup
