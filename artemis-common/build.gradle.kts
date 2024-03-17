@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.Mode.DEVELOPMENT
+
 plugins {
     // language support
     kotlin("multiplatform") version "2.0.0-Beta3"
@@ -8,6 +10,13 @@ plugins {
     id("com.gradle.plugin-publish") version "1.2.0"
     publishing
     `maven-publish`
+
+    // kotlin serialisation
+    kotlin("plugin.serialization") version "1.9.22"
+
+    // artemis
+    // this is only required so we get the artemisBuildJavaScript rule as part of the internal demo.
+    // id("wtf.zv.artemis.plugin") version "0.0.1"
 }
 
 group = "wtf.zv.artemis"
@@ -31,6 +40,12 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(kotlin("stdlib"))
+
+                // kotlinx serialization
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
+                // kotlinx time
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
             }
         }
 

@@ -1,37 +1,38 @@
 package wtf.zv.artemis.core.web.page.render.internal
 
 import kotlinx.html.*
+import wtf.zv.artemis.core.config.ArtemisConfigAccessor
 import wtf.zv.artemis.core.config.ArtemisConstants.ARTEMIS_JAVASCRIPT_BUNDLE_URL
 import wtf.zv.artemis.core.web.page.PagePlugin
 
 /** [HTML] plugin - renders the HTML Head provided by the [pagePlugin]. */
 fun HTML.renderPageHead(pagePlugin: PagePlugin) {
-    // TODO: Wire up this to the config, maybe I should create a
-    //  global config state, or ideally add Dagger.
-    val isDevelopmentMode = true
+    val isDevelopmentMode = ArtemisConfigAccessor.getConfig().isDevelopmentMode
 
-    if (pagePlugin.hasHead() || pagePlugin.hasStyle() || pagePlugin.hasJavaScript() || isDevelopmentMode) {
-        head {
-            if (pagePlugin.hasHead()) {
+    head {
+        if (pagePlugin.hasHead()) {
+            unsafe {
+                + pagePlugin.provideHead().getHtml()
+            }
+        }
+
+        if (pagePlugin.hasStyle()) {
+            style {
                 unsafe {
-                    + pagePlugin.provideHead().getHtml()
+                    + pagePlugin.provideStyleSheet().getStyleSheet()
                 }
             }
+        }
 
-            if (pagePlugin.hasStyle()) {
-                style {
-                    unsafe {
-                        + pagePlugin.provideStyleSheet().getStyleSheet()
-                    }
-                }
+        if (pagePlugin.provideJavaScriptApiCalls().isNotEmpty() || isDevelopmentMode) {
+            script {
+                type = "application/javascript"
+                src = ARTEMIS_JAVASCRIPT_BUNDLE_URL
             }
+        }
 
-            if (pagePlugin.provideJavaScriptApiCalls().isNotEmpty()) {
-                script {
-                    type = "application/javascript"
-                    src = ARTEMIS_JAVASCRIPT_BUNDLE_URL
-                }
-            }
+        meta {
+            name = "artemis-rendered"
         }
     }
 }

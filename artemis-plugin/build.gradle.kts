@@ -1,4 +1,4 @@
-plugins {
+ plugins {
     // lang support
     kotlin("jvm") version "2.0.0-Beta3"
     java
@@ -15,20 +15,6 @@ version = "0.0.1"
 
 repositories {
     mavenCentral()
-}
-
-val mainVerticleName = "wtf.zv.artemis.demo.EmbeddedDemo"
-val launcherClassName = "io.vertx.core.Launcher"
-
-val watchForChange = "src/**/*"
-val doOnChange = "${projectDir}/gradlew classes"
-
-tasks.withType<JavaExec> {
-    args = listOf("run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
-}
-
-application {
-    mainClass.set(launcherClassName)
 }
 
 dependencies {

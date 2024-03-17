@@ -3,7 +3,10 @@ package wtf.zv.artemis.core.server.http
 import io.vertx.core.Handler
 import io.vertx.core.Vertx
 import io.vertx.core.http.ServerWebSocket
+import kotlinx.serialization.json.Json
 import wtf.zv.artemis.core.config.ArtemisConfig
+import wtf.zv.artemis.core.localenv.ClientPing
+import wtf.zv.artemis.core.localenv.DeploymentData
 
 class ArtemisWebSocketHandler(
     private val artemisConfig: ArtemisConfig,
@@ -18,13 +21,17 @@ class ArtemisWebSocketHandler(
         }
 
         webSocket.textMessageHandler { message ->
-            if (message == CLIENT_PING) {
-                println("[Artemis @core]: WebSocket - got a client ping: $message")
-                webSocket.writeTextMessage(SERVER_HASH_ACK.format(deploymentHash.value))
-            }
+            val clientPing = Json.decodeFromString<ClientPing>(message)
+            println("[Artemis @core]: WebSocket - client connected at unix: ${clientPing.deploymentMark}")
+
+            val deploymentData = DeploymentData(
+                deploymentHash = deploymentHash.value
+            )
+
+            webSocket.writeTextMessage(Json.encodeToString(
+                DeploymentData.serializer(),
+                deploymentData
+            ))
         }
     }
 }
-
-private const val SERVER_HASH_ACK = "artemis-ws:server:hash-ack:%s"
-private const val CLIENT_PING = "artemis-ws:client:ping"
