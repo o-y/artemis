@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/artemis-common.jvmMain.iml" filepath="$PROJECT_DIR$/.idea/modules/artemis-common.jvmMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/artemis-plugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/artemis-plugin.main.iml" />
     </modules>
   </component>
 </project>

@@ -1,9 +1,0 @@
-abi_version=1.8.0
-builtins_platform=JS
-compiler_version=2.0.0-dev-11567
-depends=kotlin
-ir_signature_versions=1,2
-metadata_version=1.4.1
-serializedIrFileFingerprints=2jd1zdt7f8rjw.2bhcyo370ioyt 14dsye32mn5yg.pdwjpfq4l0gx w151za9a1bo8.3v0i382jeiplb 1xaj38opayu60.1rthbfj9msniq 2z253e2k6bq54.2grv8wk6cn4zf 37yg0nbjmfy9z.27rbacj9p8su9 djar7rezyjtz.2owipalbx2gxj 6ztf45z5xui3.15ow5exz9ut8e 1yhml7dz3601z.1e1hh0z9xj16m 31vm0vv7klsxr.1m17dm0eg75ns 3qttgfp3j08ib.2mkn7zhy4z6k1 1emfdv0ztm9o2.jz2hezmjrgx2 31kjkttlgvhvo.hj4kgeckjsun h1q71f8f2n4n.qh4kx6kjkeq0 2utyp4mgz7dxx.1flj8ea7fn6lm 1vgo6o7ehai2h.3rgbx12ppnahf 161der7aaj007.1d8fner4qe715 hseeth9s63h8.3683xyhjz3q80 pspckrhj7zbg.117beceywfq2l n332w3cyweq5.2dve6lo6tv0fw 178pnn3fp8pf.j54aaxpkai05 1uies8ff7tqrn.1pnciong225w0 1vemtpnp4d287.1o50ebwkeo3so 3tl3rrw8tar1t.2pmlnwz59j66s 3vure25mr0ttq.24g9huu74xzu2 299jlwlxyodo5.378gvbejo4esh wxjnz66jabtp.ilf6jenbe9zg 3aw74nq47x0js.2imwdaerxo4cf 2ugxfbeka5huh.3cqlwolv68hrd 21fpsl2ekf4hk.2a1gwqou7flkz gdtblb7jz7ty.27cglgp9iv8bk
-serializedKlibFingerprint=tl6eerupo5tl.xe21nbe0iwa3
-unique_name=org.jetbrains.kotlin\:kotlin-dom-api-compat

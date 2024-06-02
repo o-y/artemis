@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.Mode.DEVELOPMENT
-
 plugins {
     // language support
     kotlin("multiplatform") version "2.0.0-Beta3"
@@ -7,15 +5,13 @@ plugins {
     application
 
     // plugin support
-    id("com.gradle.plugin-publish") version "1.2.0"
-    publishing
-    `maven-publish`
+    id("maven-publish")
 
     // kotlin serialisation
     kotlin("plugin.serialization") version "1.9.22"
 
     // artemis
-    // this is only required so we get the artemisBuildJavaScript rule as part of the internal demo.
+    // this is only required in order to get the artemisBuildJavaScript rule as part of the internal demo.
     // id("wtf.zv.artemis.plugin") version "0.0.1"
 }
 
@@ -35,8 +31,6 @@ kotlin {
     }
 
     sourceSets {
-        withSourcesJar(publish = true)
-
         commonMain {
             dependencies {
                 implementation(kotlin("stdlib"))
@@ -49,7 +43,7 @@ kotlin {
             }
         }
 
-        val jsMain by getting {
+        jsMain {
             dependencies {
                 // ktor support
                 implementation("io.ktor:ktor-client-core:2.3.8") // websocket

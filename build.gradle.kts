@@ -1,1 +1,0 @@
-// This is a stub file, which is required as part of the multi-module Gradle architecture

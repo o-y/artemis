@@ -45,7 +45,7 @@ internal class ArtemisTranspilerPlugin : ArtemisPluginBase {
         val buildJavaScript = buildJavaScriptTask()
 
         return register(artemisInternalCopyJavaScriptTask, Copy::class.java) { task ->
-            task.group = ""
+            task.group = "other"
             task.description = "INTERNAL TASK - Copies the generated JavaScript bundle into $artemisDist"
 
             task.from(buildJavaScript) {
