@@ -1,21 +1,21 @@
 package wtf.zv.artemis.common
 
-import kotlin.properties.ReadOnlyProperty
-import kotlin.random.Random
-import kotlin.random.Random.Default.nextInt
-
 /** Defines the base interface for KMP-Common HTML class/ID attribute definitions. */
 interface ArtemisBaseElementIdentifier {
-    val id: String
+    val ref: String
         get() = "$this"
+
+    /** Formats the [ArtemisBaseElementIdentifier] as an ID rule for CSS definitions. */
+    // TODO: Scope this to PageStyleSheet once context receivers reach opt-in status.
+    val cssId: String
+        get() = "#$ref"
+
+    /** Formats the [ArtemisBaseElementIdentifier] as a class rule for CSS definitions. */
+    val cssClass: String
+        get() = ".$ref"
 }
 
-/** Returns a raw [ArtemisBaseElementIdentifier] for HTML ID attribute definitions. */
+/** Returns a raw [ArtemisBaseElementIdentifier] for HTML attribute references. */
 operator fun ArtemisBaseElementIdentifier.unaryPlus(): String {
-    return id
-}
-
-/** Returns a raw [ArtemisBaseElementIdentifier] for HTML ID attribute definitions. */
-fun ArtemisBaseElementIdentifier.id(): String {
-    return id
+    return ref
 }

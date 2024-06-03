@@ -35,8 +35,8 @@ tasks.withType<JavaExec> {
     args = listOf(
         "run", mainVerticleName,
         "--launcher-class=$launcherClassName",
-//        "--redeploy=$watchForChange",
-//        "--on-redeploy=$doOnChange"
+        "--redeploy=$watchForChange",
+        "--on-redeploy=$doOnChange"
     )
 }
 

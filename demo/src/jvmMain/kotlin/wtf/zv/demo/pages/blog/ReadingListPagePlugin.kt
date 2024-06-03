@@ -44,7 +44,7 @@ class ReadingListPagePlugin : PagePlugin() {
       whiteSpace = WhiteSpace.nowrap
     }
 
-    "#$READING_LIST_DIV_ID" {
+    READING_LIST_DIV_ID.cssId {
       display = Display.flex
 
       table {

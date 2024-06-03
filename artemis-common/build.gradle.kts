@@ -40,6 +40,12 @@ kotlin {
 
                 // kotlinx time
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+
+                // kotlinx atomics
+                implementation("org.jetbrains.kotlinx:atomicfu:0.24.0")
+
+                // kotlinx coroutines
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC")
             }
         }
 
@@ -110,7 +116,7 @@ tasks {
         dependsOn(publishToMavenLocal)
 
         doLast {
-            println("[Artemis @plugin]: NOTE: Artemis built and locally published to: ~/.m2/repositories")
+            println("[Artemis @plugin]: NOTE: Artemis built and locally published to: ~/.m2/repositories.")
         }
     }
 }

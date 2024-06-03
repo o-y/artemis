@@ -64,8 +64,8 @@ class HomePagePlugin : PagePlugin() {
 
     IntRange(1, 3).map {
       img {
-        classes = setOf("img_$it")
-        src = "https://z.zv.wtf/lastfm/v1/image"
+        classes = setOf("img_$it", + HomePage.LAST_FM_IMAGE_CLASS)
+        src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
       }
     }
 
@@ -84,6 +84,9 @@ class HomePagePlugin : PagePlugin() {
     img {
       height = 200.px
       width = 200.px
+
+      background = "#F4F4F4"
+      border = Border.none
     }
 
     ".img_1" {

@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import wtf.zv.artemis.core.localenv.ClientPing
 import wtf.zv.artemis.core.localenv.DeploymentData
-import kotlin.time.Duration
 
 val host = window.location.hostname
 val port = window.location.port

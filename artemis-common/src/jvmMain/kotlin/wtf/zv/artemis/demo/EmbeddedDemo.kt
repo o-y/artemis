@@ -2,10 +2,13 @@ package wtf.zv.artemis.demo
 
 import io.vertx.kotlin.coroutines.CoroutineVerticle
 import kotlinx.html.*
+import wtf.zv.artemis.common.ArtemisBaseElementIdentifier
+import wtf.zv.artemis.common.toFormattedString
 import wtf.zv.artemis.core.config.ArtemisConfig.Dsl.artemisServerConfig
 import wtf.zv.artemis.core.server.ArtemisVerticleFactory
 import wtf.zv.artemis.core.web.page.PagePlugin
 import wtf.zv.artemis.core.web.page.api.createBody
+import wtf.zv.artemis.core.web.page.api.css.createPageStyleSheet
 import wtf.zv.artemis.core.web.page.api.ofPath
 
 /** Sample demo app, used to verify functionality. */
@@ -47,4 +50,14 @@ private class EmbeddedDemoPagePlugin : PagePlugin() {
             }
         }
     }
+
+    override fun provideStyleSheet() = createPageStyleSheet {
+
+    }
+}
+
+enum class EmbeddedDemoIdentifier : ArtemisBaseElementIdentifier {
+    DEMO_DIV_ID;
+
+    override fun toString() = toFormattedString()
 }
