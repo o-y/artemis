@@ -6,6 +6,15 @@
       <module name="artemis-multiplatform.common-artemis.test" target="18" />
       <module name="artemis-multiplatform.jvmMain.main" target="18" />
       <module name="artemis-multiplatform.jvmMain.test" target="18" />
+      <module name="artemis-root.artemis-common" target="21" />
+      <module name="artemis-root.artemis-common.main" target="21" />
+      <module name="artemis-root.artemis-common.test" target="21" />
+      <module name="artemis-root.artemis-plugin" target="21" />
+      <module name="artemis-root.artemis-plugin.main" target="21" />
+      <module name="artemis-root.artemis-plugin.test" target="21" />
+      <module name="artemis-root.demo" target="21" />
+      <module name="artemis-root.demo.main" target="21" />
+      <module name="artemis-root.demo.test" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>

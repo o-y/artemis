@@ -5,7 +5,7 @@
     application
 
     // plugin support
-     id("maven-publish")
+    id("maven-publish")
 }
 
 group = "wtf.zv.artemis"
@@ -31,17 +31,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.9.0")
 }
 
-//gradlePlugin {
-//    val artemisPlugin by plugins.creating {
-//        id = "wtf.zv.artemis.plugin"
-//        version = "0.0.1"
-//        implementationClass = "wtf.zv.artemis.plugin.ArtemisCorePlugin"
-//
-//        displayName = "artemis"
-//        description = "Generates bindings and transpiles KMP Kt JavaScript targeting code"
-//    }
-//}
-
 publishing {
     publications {
         create<MavenPublication>("artemisCore") {
@@ -55,10 +44,8 @@ publishing {
 }
 
 tasks {
-    val artemisPublishPluginTask = "artemisPublish"
-
     //===== Publishers
-    val publishArtemisPlugin = register(artemisPublishPluginTask) {
+    register(name = "artemisPublish") {
         group = "artemis"
         description = "Locally publishes the Artemis to ~/.m2/repositories"
 

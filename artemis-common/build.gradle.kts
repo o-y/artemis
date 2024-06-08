@@ -8,7 +8,7 @@ plugins {
     id("maven-publish")
 
     // kotlin serialisation
-    kotlin("plugin.serialization") version "1.9.22"
+    kotlin("plugin.serialization") version "2.0.0"
 
     // artemis
     // this is only required in order to get the artemisBuildJavaScript rule as part of the internal demo.
@@ -28,6 +28,7 @@ kotlin {
 
     js {
         browser()
+        generateTypeScriptDefinitions()
     }
 
     sourceSets {

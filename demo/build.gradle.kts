@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig.Mode
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("multiplatform") version "2.0.0-Beta3"
@@ -49,7 +48,7 @@ kotlin {
     js(IR) {
         binaries.executable()
         browser {
-            commonWebpackConfig(Action {
+            commonWebpackConfig {
                 output?.apply {
                     // https://webpack.js.org/configuration/output/#outputlibrarytarget
                     // 'this' populates the global context with the [library] declaration.
@@ -64,10 +63,12 @@ kotlin {
                 }
 
                 mode = Mode.DEVELOPMENT
-                sourceMaps = false
+                sourceMaps = true
                 showProgress = true
-            })
+            }
         }
+
+        generateTypeScriptDefinitions()
     }
 
     sourceSets {

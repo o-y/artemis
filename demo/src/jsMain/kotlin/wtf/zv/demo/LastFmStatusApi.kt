@@ -5,7 +5,6 @@ package wtf.zv.demo
 import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.coroutines.*
-import kotlinx.css.tr
 import kotlinx.html.*
 import kotlinx.html.dom.create
 import kotlinx.html.js.onClickFunction
@@ -13,12 +12,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json.Default.decodeFromString
 import org.w3c.dom.HTMLImageElement
-import org.w3c.dom.url.URL
 import wtf.zv.artemis.common.js.forEach
 import wtf.zv.artemis.common.js.getElementById
 import wtf.zv.artemis.common.js.getElementsByClassName
-import wtf.zv.artemis.common.js.toList
-import wtf.zv.artemis.common.unaryPlus
 import wtf.zv.demo.pages.HomePage
 import wtf.zv.demo.pages.HomePage.HOVER_CURSOR_CLASS
 import wtf.zv.demo.pages.HomePage.LAST_FM_IMAGE_CLASS
