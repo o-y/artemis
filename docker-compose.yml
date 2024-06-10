@@ -1,0 +1,19 @@
+services:
+
+  run-demo:
+    image: gradle:latest
+    user: gradle
+    volumes:
+      # bind the gradle-cache to /home/gradle/.gradle
+      - gradle-cache:/home/gradle/.gradle
+      # bind the .m2 plugins repository to /home/gradle/.m2
+      - ~/.m2:/home/gradle/.m2
+      # bind the current port to /home/gradle/project
+      - $PWD:/home/gradle/project
+    working_dir: /home/gradle/project
+    command: gradle demo:run
+
+volumes:
+  gradle-cache:
+    name: gradle-cache
+    external: false

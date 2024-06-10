@@ -169,3 +169,8 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build

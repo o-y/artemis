@@ -9,7 +9,7 @@ internal class ArtemisFileWriter {
 
     /** Writes the given [artemisFileSpecs]'s to the [Project.getBuildDir]. */
     fun writeToBuildDirectory(fileSpecs: Set<FileSpec>, project: Project) {
-        val projectBuildDir = project.layout.buildDirectory
+        val projectBuildDir = project.projectDir
         val projectGeneratedBuildDir = "${projectBuildDir}/${generatedBuildDirectory}"
 
         fileSpecs.forEach { fileSpec ->

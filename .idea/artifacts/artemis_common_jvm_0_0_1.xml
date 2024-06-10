@@ -2,7 +2,7 @@
   <artifact type="jar" name="artemis-common-jvm-0.0.1">
     <output-path>$PROJECT_DIR$/artemis-common/build/libs</output-path>
     <root id="archive" name="artemis-common-jvm-0.0.1.jar">
-      <element id="module-output" name="artemis-common.jvmMain" />
+      <element id="module-output" name="artemis.artemis-common.jvmMain" />
     </root>
   </artifact>
 </component>

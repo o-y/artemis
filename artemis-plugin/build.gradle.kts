@@ -6,6 +6,7 @@
 
     // plugin support
     id("maven-publish")
+    `java-gradle-plugin`
 }
 
 group = "wtf.zv.artemis"
@@ -31,28 +32,41 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.9.0")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("artemisCore") {
-            from(components["java"])
+ gradlePlugin {
+     val artemisPlugin by plugins.creating {
+         id = "wtf.zv.artemis.plugin"
+         version = "0.0.1"
+         implementationClass = "wtf.zv.artemis.plugin.ArtemisCorePlugin"
 
-            groupId = "wtf.zv.artemis"
-            artifactId = "core"
-            version = "0.0.1"
-        }
-    }
-}
+         displayName = "artemis"
+         description = "Generates bindings and transpiles KMP Kt JavaScript targeting code"
+     }
+ }
 
-tasks {
-    //===== Publishers
-    register(name = "artemisPublish") {
-        group = "artemis"
-        description = "Locally publishes the Artemis to ~/.m2/repositories"
+ publishing {
+     publications {
+         create<MavenPublication>("artemisCore") {
+             from(components["java"])
 
-        dependsOn(publishToMavenLocal)
+             groupId = "wtf.zv.artemis"
+             artifactId = "core"
+             version = "0.0.1"
+         }
+     }
+ }
 
-        doLast {
-            println("[Artemis @plugin]: NOTE: Artemis built and locally published to: ~/.m2/repositories")
-        }
-    }
-}
+ tasks {
+     val artemisPublishPluginTask = "artemisPublish"
+
+     //===== Publishers
+     val publishArtemisPlugin = register(artemisPublishPluginTask) {
+         group = "artemis"
+         description = "Locally publishes the Artemis to ~/.m2/repositories"
+
+         dependsOn(publishToMavenLocal)
+
+         doLast {
+             println("[Artemis @plugin]: NOTE: Artemis built and locally published to: ~/.m2/repositories")
+         }
+     }
+ }
