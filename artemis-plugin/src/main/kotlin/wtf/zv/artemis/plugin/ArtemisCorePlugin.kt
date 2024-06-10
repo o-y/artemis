@@ -9,8 +9,8 @@ import wtf.zv.artemis.compiler.ArtemisTranspilerPlugin
  * Entry point to the Artemis plugin.
  *
  * This class essentially:
- *  - Creates the compiler and transpiler plugins, which
- *  - Registered their existence with the ArtemisPluginOrchestrator, which
+ *  - Creates the [ArtemisCompilerPlugin] and [ArtemisTranspilerPlugin].
+ *  - Registers their existence with the [ArtemisPluginOrchestrator], which
  *  - Registers a task (ArtemisBuildJavaScript) which groups the two existing plugins
  */
 class ArtemisCorePlugin : Plugin<Project> {

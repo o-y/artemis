@@ -26,7 +26,7 @@ internal class ArtemisTranspilerPlugin : ArtemisPluginBase {
 
              val artemisBuildJavaScriptBundle = register(artemisBuildJavaScriptBundleTask) {
                  it.group = artemisGradleGroup
-                 it.description = "Generates a JavaScript bundle from Kotlin code targeting JavaScript and places this in $artemisDist"
+                 it.description = "[INTERNAL] Generates a JavaScript bundle from Kotlin code targeting JavaScript and places this in $artemisDist"
 
                  // I can't depend on the updateYarnTask anywhere in this task whilst Gradle multi-project builds are
                  // enabled, otherwise for reasons un-fucking-known during Gradle syncs it errors because the

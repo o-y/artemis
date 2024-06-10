@@ -63,7 +63,7 @@ internal enum class GradleBuildDefinition(
     val definitionDescription: String = "",
     val isHook: Boolean = false,
     val isInternal: Boolean = isHook,
-    ) {
+) {
     ArtemisBuildJavaScript(
         definitionName = "artemisBuildJavaScript",
         definitionDescription = "Generates bindings for JS-targeting KMP code and builds the JavaScript bundle"
