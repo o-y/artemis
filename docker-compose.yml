@@ -1,6 +1,5 @@
 services:
-
-  run-demo:
+  publish-artemis-common:
     image: gradle:latest
     user: gradle
     volumes:
@@ -9,9 +8,38 @@ services:
       # bind the .m2 plugins repository to /home/gradle/.m2
       - ~/.m2:/home/gradle/.m2
       # bind the current port to /home/gradle/project
-      - $PWD:/home/gradle/project
-    working_dir: /home/gradle/project
-    command: gradle demo:run
+      - .:/home/gradle/project
+    working_dir: /home/gradle/project/artemis-common
+    command: gradle artemisPublish
+
+  publish-artemis-plugin:
+    image: gradle:latest
+    user: gradle
+    volumes:
+      # bind the gradle-cache to /home/gradle/.gradle
+      - gradle-cache:/home/gradle/.gradle
+      # bind the .m2 plugins repository to /home/gradle/.m2
+      - ~/.m2:/home/gradle/.m2
+      # bind the current port to /home/gradle/project
+      - .:/home/gradle/project
+    working_dir: /home/gradle/project/artemis-plugin
+    command: gradle artemisPublish
+
+  build-demo:
+    image: gradle:latest
+    user: gradle
+    depends_on:
+      - publish-artemis-common
+      - publish-artemis-plugin
+    volumes:
+      # bind the gradle-cache to /home/gradle/.gradle
+      - gradle-cache:/home/gradle/.gradle
+      # bind the .m2 plugins repository to /home/gradle/.m2
+      - ~/.m2:/home/gradle/.m2
+      # bind the current port to /home/gradle/project
+      - .:/home/gradle/project
+    working_dir: /home/gradle/project/demo
+    command: gradle artemisBuildJavascript build
 
 volumes:
   gradle-cache:

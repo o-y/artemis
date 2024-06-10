@@ -107,7 +107,7 @@ publishing {
 }
 
 tasks {
-    val artemisPublishPluginTask = "artemisCommonPublish"
+    val artemisPublishPluginTask = "artemisPublish"
 
     //===== Publishers
     val publishArtemisPlugin = register(artemisPublishPluginTask) {

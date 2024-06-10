@@ -46,11 +46,13 @@ dependencies {
  publishing {
      publications {
          create<MavenPublication>("artemisCore") {
-             from(components["java"])
-
              groupId = "wtf.zv.artemis"
+             // TODO: Align this with artemis-common, otherwise use s/plugin/core in the naming scheme
              artifactId = "core"
              version = "0.0.1"
+
+             // TODO: Why is this java and not kotlin?
+             from(components["java"])
          }
      }
  }
@@ -59,7 +61,7 @@ dependencies {
      val artemisPublishPluginTask = "artemisPublish"
 
      //===== Publishers
-     val publishArtemisPlugin = register(artemisPublishPluginTask) {
+     register(artemisPublishPluginTask) {
          group = "artemis"
          description = "Locally publishes the Artemis to ~/.m2/repositories"
 

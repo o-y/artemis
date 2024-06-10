@@ -3,6 +3,7 @@ package wtf.zv.artemis.compiler
 import wtf.zv.artemis.compiler.io.ArtemisFileParser
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import wtf.zv.artemis.compiler.ArtemisCompilerPlugin.Companion.jsMainSourceSet
 import wtf.zv.artemis.plugin.ArtemisPluginBase
 import wtf.zv.artemis.plugin.ArtemisPluginOrchestrator
 import wtf.zv.artemis.plugin.GradleBuildDefinition.ArtemisBuildJavaScript
@@ -39,7 +40,7 @@ internal class ArtemisCompilerPlugin : ArtemisPluginBase {
 
     private fun transpileFiles(project: Project) {
         val kotlinMultiplatform = project.extensions.getByType(KotlinMultiplatformExtension::class.java)
-        val jsMainSourceSet = kotlinMultiplatform.sourceSets.getByName(wtf.zv.artemis.compiler.ArtemisCompilerPlugin.jsMainSourceSet).kotlin.srcDirs.toSet()
+        val jsMainSourceSet = kotlinMultiplatform.sourceSets.getByName(jsMainSourceSet).kotlin.srcDirs.toSet()
 
         artemisFileParser.parseSourceSets(jsMainSourceSet, project)
     }

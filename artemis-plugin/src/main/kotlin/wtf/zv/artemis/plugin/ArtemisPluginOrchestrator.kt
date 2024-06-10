@@ -58,6 +58,8 @@ internal object ArtemisPluginOrchestrator {
  * @param isInternal - defines whether the task should be added to the Artemis Gradle Task Group - only applicable
  *        if [isHook] is false.
  */
+// TODO: Implement a way which allows defining a graph of hooks and tasks, in such a way that any given task can depend
+//  on another task (whether yet-defined) or not.
 internal enum class GradleBuildDefinition(
     val definitionName: String,
     val definitionDescription: String = "",
