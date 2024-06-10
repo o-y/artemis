@@ -7,9 +7,9 @@ import java.io.File
 /** Writes generated Kotlin code to the Gradle project build directory. */
 internal class ArtemisFileWriter {
 
-    /** Writes the given [artemisFileSpecs]'s to the [Project.getBuildDir]. */
+    /** Writes the given [fileSpecs]'s to the [Project.getBuildDir]. */
     fun writeToBuildDirectory(fileSpecs: Set<FileSpec>, project: Project) {
-        val projectBuildDir = project.projectDir
+        val projectBuildDir: File = project.layout.buildDirectory.get().asFile
         val projectGeneratedBuildDir = "${projectBuildDir}/${generatedBuildDirectory}"
 
         fileSpecs.forEach { fileSpec ->
